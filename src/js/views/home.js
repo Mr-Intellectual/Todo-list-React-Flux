@@ -9,4 +9,5 @@ export const Home = () => (
 		  <button class="btn btn-primary btn-lg" type="button">Go to My ToDo List</button>
 		</div>
 	  </div>
+	  
 );
