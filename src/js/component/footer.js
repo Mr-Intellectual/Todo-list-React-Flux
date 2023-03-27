@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
-export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Made git by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
-	</footer>
-);
+
+export default function Footer(props) {
+	return (
+	<footer className="footer mt-auto pt-3 text-center">
+		  <div class="d-flex justify-content-center mt-3 py-2 border-top bg-black text-white text-center ">
+		<p class="col-md-4 my-auto py-2 text-muted">Copyright &copy; Reo Petersen, Jose Albuquerque</p>
+	  </div>
+	  </footer>
+	);
+  }

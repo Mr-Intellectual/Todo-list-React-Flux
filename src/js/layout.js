@@ -2,13 +2,20 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
+
+//Views
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
+import Table from "./views/table";
+import Detials from "./views/details";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+
+//Components
+import  Navbar  from "./component/navbar";
+import  Footer  from "./component/footer";
+import Todo from "./views/todo";
 
 
 //create your first component
@@ -17,17 +24,58 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
+	const [inputValue, setInputValue] = React.useState("");
+	const [todos, setTodos] = React.useState([]);
+
+	const trashIcon = (i) => {
+		setTodos(todos.filter((t, currenItem) => i != currenItem));
+	};
+
+	const checkIcon = () => {
+		if (inputValue === "") {
+		alert("The input cannot be empty");
+		} else {
+		setTodos(todos.concat([inputValue]));
+		setInputValue("");
+		}
+	};
+
+	const keyPress = (e) => {
+		if (e.key === "Enter" && inputValue === "") {
+		alert("The input cannot be empty");
+		} else if (e.key === "Enter") {
+		setTodos(todos.concat([inputValue]));
+		setInputValue("");
+		}
+	};
+
+
+
 	return (
-		<div>
+		<div id="main">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
+					<div className="container-xxl hv-100">
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/todo" element={<Todo
+								checkcheckcheck={checkIcon}
+								getInput={inputValue}
+								setInput={setInputValue}
+								press={keyPress}
+								trash={trashIcon}
+								setTodo={setTodos}
+							>
+								{todos}
+							</Todo>} />
+						<Route path="/table" element={<Table />} />
+						<Route path="/detials" element={<Detials />} />
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
+					</div>
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
