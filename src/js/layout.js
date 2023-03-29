@@ -5,8 +5,8 @@ import ScrollToTop from "./component/scrollToTop";
 
 //Views
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+// import { Demo } from "./views/demo";
+// import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 import Table from "./views/table";
 import Detials from "./views/details";
@@ -60,7 +60,7 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/todo" element={<Todo
-								checkcheckcheck={checkIcon}
+								check={checkIcon}
 								getInput={inputValue}
 								setInput={setInputValue}
 								press={keyPress}
@@ -71,8 +71,6 @@ const Layout = () => {
 							</Todo>} />
 						<Route path="/table" element={<Table />} />
 						<Route path="/detials" element={<Detials />} />
-						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					</div>

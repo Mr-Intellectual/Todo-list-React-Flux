@@ -74,7 +74,7 @@ console.log("ran",ranInfo)
                             type="button"
                             id="trash"
                           >
-                            <i class="fa-sharp fa-regular fa-up-down"></i>
+                            <i className="fa-solid fa-up-down"></i>
                           </button>
                           <button
                             onClick={() => trash(index)}
@@ -103,7 +103,7 @@ console.log("ran",ranInfo)
                             type="button"
                             id="trash"
                           >
-                            <i className="fa-sharp fa-regular fa-caret-up"></i>
+                            <i className="fa-solid fa-caret-up"></i>
                           </button>
                           <button
                             onClick={() => trash(index)}
@@ -111,17 +111,28 @@ console.log("ran",ranInfo)
                             type="button"
                             id="trash"
                           >
-                            <i className="fa-sharp fa-regular fa-caret-down"></i>
+                            <i className="fa-solid fa-caret-down"></i>
                           </button>
                         </td>
-                        <td>Go To Link Page for details</td>
+                        <td>
+                        <button
+                            onClick={() => trash(index)}
+                            className=" btn btn-outline-danger btn-sm"
+                            type="button"
+                            id="trash"
+                          >
+                            <i className="fa-regular fa-hand-point-right"></i>
+                            Go To Link Page for details
+
+                          </button>
+                        </td>
                         {/*</tr>
                       <tr>
                         <td>Marlo Sanki</td>
                         <td>53425532</td>
                         <td>15 May 2015</td>
                         <td>
-                          <label class="badge badge-warning">
+                          <label className="badge badge-warning">
                             In progress
                           </label>
                         </td>
@@ -131,7 +142,7 @@ console.log("ran",ranInfo)
                         <td>53275533</td>
                         <td>14 May 2017</td>
                         <td>
-                          <label class="badge badge-info">Fixed</label>
+                          <label className="badge badge-info">Fixed</label>
                         </td>
                       </tr>
                       <tr>
@@ -139,7 +150,7 @@ console.log("ran",ranInfo)
                         <td>53275534</td>
                         <td>16 May 2017</td>
                         <td>
-                          <label class="badge badge-success">Completed</label>
+                          <label className="badge badge-success">Completed</label>
                         </td>
                       </tr>
                       <tr>
@@ -147,7 +158,7 @@ console.log("ran",ranInfo)
                         <td>53275535</td>
                         <td>20 May 2017</td>
                         <td>
-                          <label class="badge badge-warning">
+                          <label className="badge badge-warning">
                             In progress
                           </label>
                         </td>*/}
