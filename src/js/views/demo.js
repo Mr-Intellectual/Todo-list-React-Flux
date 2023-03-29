@@ -8,6 +8,19 @@ import "../../styles/demo.css";
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
+	useEffect(() => {
+		// Update the document title using the browser API
+		actions.loadSomeData2()
+		console.log(">>>>>",store)
+	  },[]);
+
+	  useEffect(() => {
+		// Update the document title using the browser API
+		actions.loadSomeData3()
+		console.log(">>>>>",store)
+	  },[]);
+
+
 	return (
 		<div className="container">
 			<ul className="list-group">
