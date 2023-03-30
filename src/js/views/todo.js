@@ -76,15 +76,16 @@ export default function Todo({
 				})} */}
       <div className="input-group mb-3" id="input">
         <input
+          id="input1"
           type="text"
           className="form-control p-2"
           placeholder="What do you need to do...?"
           onChange={(e) => actions.setHolder(e)}
           // value={store.}
-          onKeyPress={press}
+          onKeyPress={(e)=>actions.keyPress(e)}
         />
         <button
-          onClick={actions.checkIcon}
+          onClick={(e)=>actions.checkIcon(e)}
           className="btn btn-outline-success"
           type="button"
           id="click"
@@ -102,8 +103,9 @@ export default function Todo({
                   key={index}
                 >
                   {item["Task Info"]}
+                  {/* {console.log(index)} */}
                   <button
-                    onClick={() => trash(index)}
+                    onClick={() => actions.trashIcon(index)}
                     className=" btn btn-outline-danger btn-sm"
                     type="button"
                     id="trash"
