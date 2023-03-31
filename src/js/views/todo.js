@@ -5,16 +5,7 @@ import { Context } from "../store/appContext";
 
 
 
-export default function Todo({
-  check,
-  getInput,
-  setInput,
-  press,
-  trash,
-  children,
-}) {
-  const [inputValue, setInputValue] = React.useState("");
-  const [todos, setTodos] = React.useState([]);
+export default function Todo() {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
@@ -32,48 +23,6 @@ export default function Todo({
   return (
     //Some html code should go here
     <>
-
-
-{/* {store.list.map((item, index) => {
-						
-              <li
-                className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary"
-                key={index}
-              >
-                {item}
-                <button
-                  onClick={() => trash(index)}
-                  className=" btn btn-outline-danger btn-sm"
-                  type="button"
-                  id="trash"
-                >
-                  <i className="fa-regular fa-trash-can"></i>
-                </button>
-              </li>
-
-
-
-
-            console.log(item)
-            <li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-				})} */}
       <div className="input-group mb-3" id="input">
         <input
           id="input1"
@@ -81,7 +30,6 @@ export default function Todo({
           className="form-control p-2"
           placeholder="What do you need to do...?"
           onChange={(e) => actions.setHolder(e)}
-          // value={store.}
           onKeyPress={(e)=>actions.keyPress(e)}
         />
         <button
@@ -103,7 +51,6 @@ export default function Todo({
                   key={index}
                 >
                   {item["Task Info"]}
-                  {/* {console.log(index)} */}
                   <button
                     onClick={() => actions.trashIcon(index)}
                     className=" btn btn-outline-danger btn-sm"
@@ -125,37 +72,3 @@ export default function Todo({
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// {children.length !== 0 ? (
-//   children.map((item, index, arr) => (
-//     <li
-//       className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary"
-//       key={index}
-//     >
-//       {item}
-//       <button
-//         onClick={() => trash(index)}
-//         className=" btn btn-outline-danger btn-sm"
-//         type="button"
-//         id="trash"
-//       >
-//         <i className="fa-regular fa-trash-can"></i>
-//       </button>
-//     </li>
-//   ))
-// ) : (
-//   <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3">
-//     Please add some task to the list...
-//   </li>
-// )}

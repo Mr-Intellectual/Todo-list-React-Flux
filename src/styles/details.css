@@ -1,7 +1,7 @@
-* {
+/* * {
   outline: 1px dashed red;
   min-height: 10px;
-}
+} */
 
 
 .payment-form {
@@ -106,14 +106,14 @@
 .payment-form .card-details label {
   font-size: 12px;
   font-weight: 600;
-  margin-bottom: 15px;
-  color: #79818a;
+  /* margin-bottom: 15px;
+  color: #79818a; */
   text-transform: uppercase;
 }
 
 .payment-form .card-details button {
-  margin-top: 0.6em;
-  padding: 12px 0;
+  /* margin-top: 0.6em;
+  padding: 12px 0; */
   font-weight: 600;
 }
 
@@ -123,7 +123,7 @@
   margin-top: 5px;
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .payment-form .title {
     font-size: 1.2em;
   }
@@ -147,4 +147,4 @@
   .payment-form .card-details button {
     margin-top: 2em;
   }
-}
+} */

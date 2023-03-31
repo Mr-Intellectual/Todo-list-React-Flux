@@ -1,6 +1,6 @@
-.list-group-item:nth-child(n+2){
+/* .list-group-item:nth-child(n+2){
     border-top: 0 !important;
-  }
+  } */
   
   #input:has(#click:hover)::before,
   #input:has(#click:hover)::after  {

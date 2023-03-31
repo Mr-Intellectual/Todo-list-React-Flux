@@ -1,7 +1,10 @@
-import React from "react";
+import React,{ useContext } from "react";
 import '../../styles/details.css'
+import { Context } from "../store/appContext";
+
 
 export default function Detials() {
+  const { store, actions } = useContext(Context);
   return (
     //Some html code should go here
     <section className="payment-form dark">
@@ -11,7 +14,7 @@ export default function Detials() {
             <p>You can modify your task on this page.</p>
           </div>
           <form>
-            <div className="products">
+            {<div className="products">
               <h3 className="title">...</h3>
               <div className="item">
                 <span className="price">...</span>
@@ -34,15 +37,17 @@ export default function Detials() {
                 <p className="item-description">Lorem ipsum dolor sit amet</p>
               </div>
               <div className="total">Added Description<span className="price">Change</span></div>
-            </div>
+            </div>}
             <div className="card-details">
               <h3 className="title">Modify Details</h3>
               <div className="row">
                 <div className="form-group col-sm-3">
-                  <label for="card-holder">Task Channge</label>
+                  <p>
+                    <label for="card-holder">Task Channge</label>
+                  </p>
                   <button
                     onClick={() => trash(index)}
-                    className=" btn btn-outline-danger btn-sm"
+                    className=" btn btn-outline-danger btn-sm fa-2x"
                     type="button"
                     id="trash"
                   >
@@ -50,21 +55,25 @@ export default function Detials() {
                   </button>
                 </div>
                 <div className="form-group col-sm-3">
-                  <label for="card-holder">Date Channge</label>
+                  <p>
+                    <label for="card-holder">Date Channge</label>
+                  </p>
                   <button
                     onClick={() => trash(index)}
                     className=" btn btn-outline-danger btn-sm"
                     type="button"
                     id="trash"
                   >
-                    <i className="fa-solid fa-calendar-days"></i>
+                    <i className="fa-solid fa-calendar-days fa-2x"></i>
                   </button>
                 </div>
                 <div className="form-group col-sm-3">
-                  <label for="card-holder">Status Channge</label>
+                  <p>
+                    <label for="card-holder">Status Channge</label>
+                  </p>
                   <button
                     onClick={() => trash(index)}
-                    className=" btn btn-outline-danger btn-sm"
+                    className=" btn btn-outline-danger btn-sm fa-2x"
                     type="button"
                     id="trash"
                   >
@@ -72,10 +81,12 @@ export default function Detials() {
                   </button>
                 </div>
                 <div className="form-group col-sm-3">
-                  <label for="card-holder">Add Memo</label>
+                  <p>
+                    <label for="card-holder">Add Memo</label>
+                  </p>
                   <button
                     onClick={() => trash(index)}
-                    className=" btn btn-outline-danger btn-sm"
+                    className=" btn btn-outline-danger btn-sm fa-2x"
                     type="button"
                     id="trash"
                   >
@@ -94,3 +105,38 @@ export default function Detials() {
       </section>
   );
 }
+
+
+
+
+
+
+
+
+// {store.list.length !== 0 ? (
+//   store.list.map((item, index) => (
+//     <div className="products">
+// <h3 className="title">...</h3>
+// <div className="item" key={index}>
+// <span className="price">{item["Task Info"]}</span>
+// <p className="item-name">Task Info</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="item">
+// <span className="price">{item["ID Info"]}</span>
+// <p className="item-name">ID No.</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="item">
+// <span className="price">{item["Created"]}</span>
+// <p className="item-name">CREATED ON</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="item">
+// <span className="price"><label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label></span>
+// <p className="item-name">Status</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="total">Added Description<span className="price">Change</span></div>
+// </div>
+// ))):("hi")}

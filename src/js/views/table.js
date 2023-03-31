@@ -1,176 +1,111 @@
-import React from "react";
+import React,{ useContext } from "react";
 import '../../styles/table.css'
+import { Context } from "../store/appContext";
 
 export default function Table() {
-  let [ranInfo, setRanInfo] = React.useState({});
+  const { store, actions } = useContext(Context);
   
-  React.useEffect(() => {
-//       setRanInfo({
-//   ...RanInfo()
-// });
-  });
-
-  function RunInfo() {
-    let statusArr = [
-      { Stat: "Pending", Color: "danger" },
-      { Stat: "In progress", Color: "warning" },
-      { Stat: "Fixed", Color: "info" },
-      { Stat: "Completed", Color: "success" }
-    ];
-    // let statusColorArr=["danger", "warning","info","success"]
-    let statIndex = Math.floor(Math.random() * 4);
-    let month = [
-      "Jan.",
-      "Feb.",
-      "Mar.",
-      "Apr.",
-      "May",
-      "June",
-      "July",
-      "Aug.",
-      "Sep.",
-      "Oct.",
-      "Nov.",
-      "Dec."
-    ];
-    let day = Math.floor(Math.random() * 27) + 1;
-    let year = "20" + (Math.floor(Math.random() * 1) + 23);
-    return {
-      ID: Math.floor(Math.random() * Math.pow(10, 6)),
-      Status: statusArr[statIndex],
-      // sColor:statusColorArr[statIndex],
-      Date: `${month[Math.floor(Math.random() * month.length)]} ${day} ${year}`
-    };
-  }
-  //       setRanInfo({
-//   ...RanInfo()
-// });
-console.log("hi")
-// console.log(RunInfo())
-console.log("ran",ranInfo)
   return (
     //Some html code should go here
-    <div className="page-content page-container" id="page-content">
-      <div className="padding">
-        <div className="row container d-flex justify-content-center">
-          <div className="col-lg-8 grid-margin stretch-card">
-            <div className="card">
+            <div className="card" id="page-content">
               <div className="card-body">
-                <h4 className="card-title">Todo List Table</h4>
+                <h4 className="card-title text-center">Todo List Table</h4>
                 <p className="card-description">Fix this</p>
                 <div className="table-responsive">
                   <table className="table">
                     <thead>
                       <tr>
-                        <th>Task Info</th>
-                        <th>ID No.</th>
-                        <th>Created On</th>
-                        <th>Status</th>
-                        <th>
-                          Modify
+                        <th className="py-4">Task Info</th>
+                        <th className="py-4">ID No.</th>
+                        <th className="py-4">Created On</th>
+                        <th className="py-4">Status</th>
+                        <th className="pb-1">
+                          <p className="py-0 m-0">
+                            Modify
+                          </p>
                           <button
-                            onClick={() => trash(index)}
-                            className=" btn btn-outline-danger btn-sm"
+                            onClick={(e) => actions.displayArrow(e)}
+                            className=" btn btn-outline-danger btn-sm mx-1 "
                             type="button"
-                            id="trash"
+                            id="arrow"
                           >
                             <i className="fa-solid fa-up-down"></i>
                           </button>
                           <button
-                            onClick={() => trash(index)}
-                            className=" btn btn-outline-danger btn-sm"
+                            onClick={(e) => actions.displayTrash(e)}
+                            className=" btn btn-outline-danger btn-sm mx-1"
                             type="button"
-                            id="trash"
+                            id="dTrash"
                           >
                             <i className="fa-regular fa-trash-can"></i>
                           </button>
                         </th>
-                        <th>Go To Page</th>
+                        <th className="py-4">Go To Page</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>Samso Park</td>
-                        <td>dasas</td>
-                        <td>12321</td>
-                        <td>
-                          <label className="badge badge-info">Pen</label>
+
+
+
+                  				
+					<tbody>
+				{store.list.length !== 0 ? (
+              		store.list.map((item, index) => (
+                      <tr className="m-1" key={index}>
+                        <td className="py-3 text-left">{item["Task Info"]}</td>
+                        <td className="py-3">{item["ID Info"]}</td>
+                        <td className="py-3">{item["Created"]}</td>
+                        <td className="pt-3 pb-0">
+                          <label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label>
                         </td>
-                        <td>
+                        <td className="py-2">
                           <button
-                            onClick={() => trash(index)}
-                            className=" btn btn-outline-danger btn-sm"
+                            onClick={() => actions.moveItemUp(index)}
+                            style={{ display:"show" }}
+                            className=" btn btn-outline-danger btn-sm mx-1 up"
                             type="button"
-                            id="trash"
+                            id="up"
                           >
-                            <i className="fa-solid fa-caret-up"></i>
+                            <i className="fa-solid fa-caret-up fa-2x"></i>
                           </button>
                           <button
-                            onClick={() => trash(index)}
-                            className=" btn btn-outline-danger btn-sm"
+                            onClick={() => actions.moveItemDown(index)}
+                            style={{ display:"show" }}
+                            className=" btn btn-outline-danger btn-sm mx-1 down"
                             type="button"
-                            id="trash"
+                            id="down"
                           >
-                            <i className="fa-solid fa-caret-down"></i>
+                            <i className="fa-solid fa-caret-down fa-2x"></i>
+                          </button>
+                          <button
+                            onClick={() => actions.trashIcon(index)}
+                            style={{ display:"none" }}
+                            className=" btn btn-outline-danger btn-sm bTrash"
+                            type="button"
+                            id="bTrash"
+                          >
+                            <i className="fa-regular fa-trash-can fa-2x"></i>
                           </button>
                         </td>
-                        <td>
+                        <td className="py-2">
                         <button
-                            onClick={() => trash(index)}
-                            className=" btn btn-outline-danger btn-sm"
+                            onClick={() => actions.gotoPage(item["ID Info"])}
+                            className=" btn btn-outline-danger btn-sm my-1"
                             type="button"
-                            id="trash"
+                            id="link"
                           >
-                            <i className="fa-regular fa-hand-point-right"></i>
+                            <i className="fa-regular fa-hand-point-right pr-2 m-1 fa-lg"></i>
                             Go To Link Page for details
 
                           </button>
                         </td>
-                        {/*</tr>
-                      <tr>
-                        <td>Marlo Sanki</td>
-                        <td>53425532</td>
-                        <td>15 May 2015</td>
-                        <td>
-                          <label className="badge badge-warning">
-                            In progress
-                          </label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>John ryte</td>
-                        <td>53275533</td>
-                        <td>14 May 2017</td>
-                        <td>
-                          <label className="badge badge-info">Fixed</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Peter mark</td>
-                        <td>53275534</td>
-                        <td>16 May 2017</td>
-                        <td>
-                          <label className="badge badge-success">Completed</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Dave</td>
-                        <td>53275535</td>
-                        <td>20 May 2017</td>
-                        <td>
-                          <label className="badge badge-warning">
-                            In progress
-                          </label>
-                        </td>*/}
-                      </tr>
+                      </tr>))):(
+                      <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3">
+                        Please add some task to the list...
+                      </li>)}
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
