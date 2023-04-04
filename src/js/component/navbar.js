@@ -15,9 +15,6 @@ export default function Navbar () {
 	<div className="navbar-brand text-white">Start Bootstrap</div>
 
 	</Link>
-      {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button> */}
 	  <button
             className="navbar-toggler "
             type="button"
@@ -29,14 +26,6 @@ export default function Navbar () {
           >
             <span className="navbar-toggler-icon" id="navbarIcon" ></span>
           </button>
-
-      {/* <div className="collapse navbar-collapse" id="navbarsExample03">
-	  <div className="ms-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
-      </div> */}
 	  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto text-center ">
 			<Link  className="nav-link text-white" to="/">

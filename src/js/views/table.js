@@ -18,7 +18,19 @@ export default function Table() {
                         <th className="py-4">Task Info</th>
                         <th className="py-4">ID No.</th>
                         <th className="py-4">Created On</th>
-                        <th className="py-4">Status</th>
+                        <th className="py-2">
+                          <p className="py-0 m-0">
+                            Status
+                          </p>
+                          <button
+                            onClick={(e) => actions.switchStatusButton(e)}
+                            className=" btn btn-outline-danger btn-sm mx-0 "
+                            type="button"
+                            id="switch"
+                          >
+                            <i className="fa-solid fa-shuffle" id="statusIcon"></i>
+                          </button>
+                        </th>
                         <th className="pb-1">
                           <p className="py-0 m-0">
                             Modify
@@ -55,7 +67,10 @@ export default function Table() {
                         <td className="py-3">{item["ID Info"]}</td>
                         <td className="py-3">{item["Created"]}</td>
                         <td className="pt-3 pb-0">
-                          <label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label>
+                          <label className={"badge badge-" + item["Status"]["Color"]}  onClick={(e) => actions.statusIcon(e)} id="switchIcon">
+                            {item["Status"]["Status"]}
+                            
+                          </label>
                         </td>
                         <td className="py-2">
                           <button
@@ -63,7 +78,7 @@ export default function Table() {
                             style={{ display:"show" }}
                             className=" btn btn-outline-danger btn-sm mx-1 up"
                             type="button"
-                            id="up"
+                            id="bUp"
                           >
                             <i className="fa-solid fa-caret-up fa-2x"></i>
                           </button>
@@ -72,7 +87,7 @@ export default function Table() {
                             style={{ display:"show" }}
                             className=" btn btn-outline-danger btn-sm mx-1 down"
                             type="button"
-                            id="down"
+                            id="bDown"
                           >
                             <i className="fa-solid fa-caret-down fa-2x"></i>
                           </button>

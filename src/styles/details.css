@@ -123,6 +123,12 @@
   margin-top: 5px;
 }
 
+#check,#date,#status,#memo{
+  width: 50px;
+  height: 60px;
+  align-items: center;
+}
+
 /* @media (min-width: 576px) {
   .payment-form .title {
     font-size: 1.2em;

@@ -1,6 +1,8 @@
-import React from "react";
+import React,{ useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+
+import { Context } from "./store/appContext";
 
 
 //Views
@@ -24,51 +26,18 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
-	const [inputValue, setInputValue] = React.useState("");
-	const [todos, setTodos] = React.useState([]);
-
-	const trashIcon = (i) => {
-		setTodos(todos.filter((t, currenItem) => i != currenItem));
-	};
-
-	const checkIcon = () => {
-		if (inputValue === "") {
-		alert("The input cannot be empty");
-		} else {
-		setTodos(todos.concat([inputValue]));
-		setInputValue("");
-		}
-	};
-
-	const keyPress = (e) => {
-		if (e.key === "Enter" && inputValue === "") {
-		alert("The input cannot be empty");
-		} else if (e.key === "Enter") {
-		setTodos(todos.concat([inputValue]));
-		setInputValue("");
-		}
-	};
-
+	const { store, actions } = useContext(Context);
 
 
 	return (
-		<div id="main">
+		<div onClick={(e)=>actions.ranClick(e)} id="main" >
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
-					<div className="container-xxl hv-100">
+					<div className="container-xxl hv-100" >
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/todo" element={<Todo
-								check={checkIcon}
-								getInput={inputValue}
-								setInput={setInputValue}
-								press={keyPress}
-								trash={trashIcon}
-								setTodo={setTodos}
-							>
-								{todos}
-							</Todo>} />
+						<Route path="/todo" element={<Todo/>} />
 						<Route path="/table" element={<Table />} />
 						<Route path="/detials" element={<Detials />} />
 						<Route path="*" element={<h1>Not found!</h1>} />

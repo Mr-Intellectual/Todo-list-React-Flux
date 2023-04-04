@@ -5,49 +5,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			list: [
 				{
-					"Task Info": "FIRST",
+					"Task Info": "0--",
 					"ID Info": 12345,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
 
 				},
 				{
-					"Task Info": "FIRST",
+					"Task Info": "1--",
 					"ID Info": 12345,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
 
 				},
 				{
-					"Task Info": "FIRST",
+					"Task Info": "2--",
 					"ID Info": 12345,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
 
 				},
 				{
-					"Task Info": "FIRST",
+					"Task Info": "3--",
 					"ID Info": 12345,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
 
 				},
 				{
-					"Task Info": "FIRST",
+					"Task Info": "4--",
 					"ID Info": 12345,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
 
 				},
 				{
-					"Task Info": "FIRST",
+					"Task Info": "5--",
 					"ID Info": 12345,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
 
 				},
 			],
-			holder:""
+			holder:"",
+			switch: false,
 				
 		},
 		actions: {
@@ -56,9 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			trashIcon: (i) => {
 				const store = getStore();
-				console.log(i)
 				const newList = store.list.filter((item) => {return item != store.list[i]})
-				console.log("list", newList)
 				setStore({ list: newList })
 			},
 		
@@ -151,33 +150,177 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  };
 				return newRanInfo;
 			},
+			ranClick: (e) => {
+				const store = getStore();
+				const switchValue = store.switch;
+				const switchElement1 = document.querySelector("#switch");
+				const switchElement2 = document.querySelector("#statusIcon");
+				const status =document.querySelectorAll(".badge")
+			
+				if (e.target.id !== "switchIcon" && e.target !== switchElement1 && e.target !== switchElement2) {
+					
+					status.forEach((i)=>{
+						i.removeAttribute("data-bs-toggle", "modal");
+						i.removeAttribute("data-bs-target", "#Modal");
+						i.removeAttribute("data-bs-whatever", "@getbootstrap");
+					})
+					setStore({ switch: false });
+				}else if(switchValue === false){
+					// console.log("its false")
+				}
+			},
+			
+			switchStatusButton:(e)=>{
+				//need code..
+				const store = getStore();
+				const switchValue = store.switch;
+				let statusButton = false,
+				status =document.querySelectorAll(".badge")
+
+				if(e.target.parentNode.parentNode.querySelector("#switch").id === "switch"){
+					status.forEach((i)=>{
+						i.setAttribute("data-bs-toggle", "modal");
+						i.setAttribute("data-bs-target", "#Modal");
+						i.setAttribute("data-bs-whatever", "@getbootstrap");
+						i.innerHTML += `<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div className="modal-dialog modal-dialog-centered">
+						<div className="modal-content">
+						  <div className="modal-header">
+							<h1 className="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						  </div>
+						  <div className="modal-body">
+						  </div>
+						</div>
+					  </div>
+					</div>`
+					console.log(i.innerText)
+					})
+					
+					statusButton = true
+					setStore({ switch: statusButton })
+				}
+			},
+			statusIcon:(e)=>{
+				const store = getStore();
+				const switchValue = store.switch;
+
+			// 	e.target.innerHTML += `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			// 	<div class="modal-dialog modal-dialog-centered">
+			// 	  <div class="modal-content">
+			// 		<div class="modal-header">
+			// 		  <h1 class="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+			// 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			// 		</div>
+			// 		<div class="modal-body">
+			// 		</div>
+			// 	  </div>
+			// 	</div>
+			//   </div>`
+				const className = e.target.attributes
+			
+				console.log(className)
+
+				let statusArr = [
+					{ "Status": "Pending", "Color": "danger" },
+					{ "Status": "In progress", "Color": "warning" },
+					{ "Status": "Fixed", "Color": "info" },
+					{ "Status": "Completed", "Color": "success" }
+				];
+				if(switchValue === true){
+					// document.querySelector("#statusIcon").parent.innerHTML +=`<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    				// 	     <div className="modal-dialog modal-dialog-centered">
+					// 	 	<div className="modal-content">
+					// 	 	  <div className="modal-header">
+					// 	 		<h1 className="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+					// 	 		<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					// 	 	  </div>
+					// 	 	  <div className="modal-body">
+					// 	 	  </div>
+					// 	 	</div>
+					// 	   </div>
+					// 	 </div>`
+					console.log(document.querySelector("#statusIcon").parentNode)
+					console.log(e.target)
+					// setStore({ switch: false })
+
+				}
+			},
 			
 			displayTrash:(e)=>{
-				let up = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.up'),
-				down = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.down'),
-				trash = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.bTrash')
-				up.style.display = "none"
-				down.style.display = "none"
-				trash.style.display = ""
-				console.log(e.target.parentNode.childNodes)
-				console.log(up, down)
+
+				let up = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bUp'),
+				down = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bDown'),
+				trash = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bTrash')
+				up.forEach((i)=>{
+					i.style.display = "none"
+				})
+				down.forEach((i)=>{
+					i.style.display = "none"
+				}) 
+				trash.forEach((i)=>{
+					i.style.display = ""
+				})
 			},
 
 			displayArrow:(e)=>{
-				let up = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.up'),
-				down = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.down'),
-				trash = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.bTrash')
-				up.style.display = ""
-				down.style.display = ""
-				trash.style.display = "none"
-				console.log("Arrow", e)
+				let up = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bUp'),
+				down = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bDown'),
+				trash = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bTrash')
+				up.forEach((i)=>{
+					i.style.display = ""
+				})
+				down.forEach((i)=>{
+					i.style.display = ""
+				}) 
+				trash.forEach((i)=>{
+					i.style.display = "none"
+				})
 			},
-			moveItemUp:(i)=>{
-				console.log("up", i)
-			},
-			moveItemDown:(i)=>{
-				console.log("down", i)
-			},
+			moveItemUp: (i) => {
+				const store = getStore();
+				const lastIndex = store.list.length - 1;
+				const newList = store.list.map((item, index, arr) => {
+				  if (index === i - 1) {
+					return arr[i];
+				  } else if (index === i) {
+					if (index === 0) {
+					  return arr[lastIndex];
+					} else {
+					  return arr[i - 1];
+					}
+				  } else if (index === lastIndex && i === 0) {
+					return arr[i];
+				  } else {
+					return item;
+				  }
+				});
+				setStore({ list: newList });
+			  },
+			  
+			  moveItemDown: (i) => {
+				const store = getStore();
+				const firstIndex = 0;
+				const lastIndex = store.list.length - 1;
+				const newList = store.list.map((item, index, arr) => {
+				  if (index === i + 1) {
+					return arr[i];
+				  } else if (index === i) {
+					if (index === lastIndex) {
+					  return arr[firstIndex];
+					} else {
+					  return arr[i + 1];
+					}
+				  } else if (index === firstIndex && i === lastIndex) {
+					return arr[i];
+				  } else {
+					return item;
+				  }
+				});
+				setStore({ list: newList });
+			  },
+			  
+			  
 			gotoPage:(i)=>{
 				console.log("page", i)
 			},

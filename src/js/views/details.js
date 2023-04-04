@@ -38,7 +38,7 @@ export default function Detials() {
               </div>
               <div className="total">Added Description<span className="price">Change</span></div>
             </div>}
-            <div className="card-details">
+            <div className="card-details text-center">
               <h3 className="title">Modify Details</h3>
               <div className="row">
                 <div className="form-group col-sm-3">
@@ -49,7 +49,7 @@ export default function Detials() {
                     onClick={() => trash(index)}
                     className=" btn btn-outline-danger btn-sm fa-2x"
                     type="button"
-                    id="trash"
+                    id="check"
                   >
                     <i className="fa-solid fa-list-check"></i>
                   </button>
@@ -62,7 +62,7 @@ export default function Detials() {
                     onClick={() => trash(index)}
                     className=" btn btn-outline-danger btn-sm"
                     type="button"
-                    id="trash"
+                    id="date"
                   >
                     <i className="fa-solid fa-calendar-days fa-2x"></i>
                   </button>
@@ -75,20 +75,20 @@ export default function Detials() {
                     onClick={() => trash(index)}
                     className=" btn btn-outline-danger btn-sm fa-2x"
                     type="button"
-                    id="trash"
+                    id="status"
                   >
                     <i className="fa-solid fa-bars-progress"></i>
                   </button>
                 </div>
                 <div className="form-group col-sm-3">
-                  <p>
-                    <label for="card-holder">Add Memo</label>
+                  <p className="mb-2">
+                    <label className="" for="card-holder">Add Memo</label>
                   </p>
                   <button
                     onClick={() => trash(index)}
                     className=" btn btn-outline-danger btn-sm fa-2x"
                     type="button"
-                    id="trash"
+                    id="memo"
                   >
                     <i className="fa-solid fa-file-medical"></i>
                   </button>
