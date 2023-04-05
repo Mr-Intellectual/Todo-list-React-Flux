@@ -13,16 +13,11 @@ export default function Todo() {
   }, []);
   
 
-  // console.log(actions.checkIcon())
-  
-  // actions.checkIcon()
-  // console.log(store.list)
-  // console.log(inputValue)
-  
-
   return (
     //Some html code should go here
     <>
+    <div className="p-1 mt-2">
+      <div className="p-4 mt-5">
       <div className="input-group mb-3" id="input">
         <input
           id="input1"
@@ -69,6 +64,8 @@ export default function Todo() {
           </>
         </ul>
       </div>
+      </div>
+    </div>
     </>
   );
 }

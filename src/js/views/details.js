@@ -13,41 +13,43 @@ export default function Detials() {
             <h2>Task Details Page</h2>
             <p>You can modify your task on this page.</p>
           </div>
-          <form>
-            {<div className="products">
-              <h3 className="title">...</h3>
-              <div className="item">
-                <span className="price">...</span>
-                <p className="item-name">Task Info</p>
-                <p className="item-description">Lorem ipsum dolor sit amet</p>
-              </div>
-              <div className="item">
-                <span className="price">123456</span>
-                <p className="item-name">ID No.</p>
-                <p className="item-description">Lorem ipsum dolor sit amet</p>
-              </div>
-              <div className="item">
-                <span className="price">Id</span>
-                <p className="item-name">CREATED ON</p>
-                <p className="item-description">Lorem ipsum dolor sit amet</p>
-              </div>
-              <div className="item">
-                <span className="price">Id</span>
-                <p className="item-name">Status</p>
-                <p className="item-description">Lorem ipsum dolor sit amet</p>
-              </div>
-              <div className="total">Added Description<span className="price">Change</span></div>
-            </div>}
-            <div className="card-details text-center">
+          
+{store.details.length !== 0 ? (
+  store.details.map((item, index) => (
+    <form className={"border-top border-4 border-"+ item["Status"]["Color"]}>
+    <div className="products" key={index}>
+<div className="item">
+<span className="price">{item["Task Info"]}</span>
+<p className="item-name">Task Info</p>
+</div>
+<div className="item">
+<span className="price">{item["ID Info"]}</span>
+<p className="item-name">ID No.</p>
+</div>
+<div className="item">
+<span className="price">{item["Created"]}</span>
+<p className="item-name">CREATED ON</p>
+</div>
+<div className="item">
+<span className="price"><label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label></span>
+<p className="item-name">Status</p>
+</div>
+<div className="m-0 ">
+  <p className="mt-0 text-center text-uppercase fw-bold"> Added Memo</p>
+  <div className="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it?
+</div>
+</div>
+</div>
+<div className="card-details text-center">
               <h3 className="title">Modify Details</h3>
               <div className="row">
                 <div className="form-group col-sm-3">
                   <p>
-                    <label for="card-holder">Task Channge</label>
+                    <label className="Label">Task Channge</label>
                   </p>
                   <button
                     onClick={() => trash(index)}
-                    className=" btn btn-outline-danger btn-sm fa-2x"
+                    className={"btn-sm fa-2x btn btn-outline-" + item["Status"]["Color"]}
                     type="button"
                     id="check"
                   >
@@ -56,11 +58,11 @@ export default function Detials() {
                 </div>
                 <div className="form-group col-sm-3">
                   <p>
-                    <label for="card-holder">Date Channge</label>
+                    <label className="Label" >Date Channge</label>
                   </p>
                   <button
                     onClick={() => trash(index)}
-                    className=" btn btn-outline-danger btn-sm"
+                    className={"btn-sm btn btn-outline-" + item["Status"]["Color"]}
                     type="button"
                     id="date"
                   >
@@ -69,11 +71,11 @@ export default function Detials() {
                 </div>
                 <div className="form-group col-sm-3">
                   <p>
-                    <label for="card-holder">Status Channge</label>
+                    <label className="Label" >Status Channge</label>
                   </p>
                   <button
-                    onClick={() => trash(index)}
-                    className=" btn btn-outline-danger btn-sm fa-2x"
+                    onClick={() => trash(index)} 
+                    className={"btn-sm fa-2x btn btn-outline-" + item["Status"]["Color"]}
                     type="button"
                     id="status"
                   >
@@ -82,11 +84,11 @@ export default function Detials() {
                 </div>
                 <div className="form-group col-sm-3">
                   <p className="mb-2">
-                    <label className="" for="card-holder">Add Memo</label>
+                    <label className="Label" >Add Memo</label>
                   </p>
                   <button
                     onClick={() => trash(index)}
-                    className=" btn btn-outline-danger btn-sm fa-2x"
+                    className={"btn-sm fa-2x btn btn-outline-" + item["Status"]["Color"]}
                     type="button"
                     id="memo"
                   >
@@ -101,6 +103,115 @@ export default function Detials() {
               </div>
             </div>
           </form>
+))):    
+<form className="border-top border-4 border-primary">
+<div className="products">
+<div className="item" >
+<span className="price">N/A</span>
+<p className="item-name">Task Info</p>
+</div>
+<div className="item">
+<span className="price">N/A</span>
+<p className="item-name">ID No.</p>
+</div>
+<div className="item">
+<span className="price">N/A</span>
+<p className="item-name">CREATED ON</p>
+</div>
+<div className="item">
+<span className="price">N/A</span>
+<p className="item-name">Status</p>
+</div>
+<div className="m-0 ">
+  <p className="mt-0 text-center text-uppercase fw-bold"> Added Memo</p>
+  <div className="p-2 text-center">There is Noting Here</div>
+</div>
+</div>
+
+
+            <div className="card-details text-center">
+              <h3 className="title">Modify Details</h3>
+              <div className="row">
+                <div className="form-group col-sm-3">
+                  <p>
+                    <label className="Label">Task Channge</label>
+                  </p>
+                  <button
+                    onClick={() => trash(index)}
+                    className=" btn btn-outline-dark btn-sm fa-2x"
+                    type="button"
+                    id="check"
+                  >
+                    <i className="fa-solid fa-list-check"></i>
+                  </button>
+                </div>
+                <div className="form-group col-sm-3">
+                  <p>
+                    <label className="Label" >Date Channge</label>
+                  </p>
+                  <button
+                    onClick={() => trash(index)}
+                    className=" btn btn-outline-dark btn-sm"
+                    type="button"
+                    id="date"
+                  >
+                    <i className="fa-solid fa-calendar-days fa-2x"></i>
+                  </button>
+                </div>
+                <div className="form-group col-sm-3">
+                  <p>
+                    <label className="Label" >Status Channge</label>
+                  </p>
+                  <button
+                    onClick={() => trash(index)}
+                    className=" btn btn-outline-dark btn-sm fa-2x"
+                    type="button"
+                    id="status"
+                    data-bs-toggle="modal" data-bs-target="#Modal" data-bs-whatever="@getbootstrap"
+                  >
+                    <i className="fa-solid fa-bars-progress"></i>
+                  </button>
+                </div>
+                <div className="form-group col-sm-3">
+                  <p className="mb-2">
+                    <label className="Label" >Add Memo</label>
+                  </p>
+                  <button
+                    onClick={() => trash(index)}
+                    className=" btn btn-outline-dark btn-sm fa-2x"
+                    type="button"
+                    id="memo"
+                  >
+                    <i className="fa-solid fa-file-medical"></i>
+                  </button>
+                </div>
+                <div className="form-group col-sm-12">
+                  <button type="button" className="btn btn-primary btn-block">
+                    Proceed
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>}
+          <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered modal-sm">
+                      <div className="modal-content">
+                        <div className="modal-header p-0">
+                          <h1 className="col modal-title fs-5 text-center mt-2" id="exampleModalLabel">Status Change</h1>
+                          <button type="button" className="btn-close my-1 mr-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body p-2 pb-0">
+                            {store.statusArr.map((item, index)=>{
+                              return(<div className="text-center" key={index}>
+                              <label className={"p-3 col badge badge-" + item["Color"]}  >
+                                {item["Status"]}
+                              </label>
+                            {console.log(item["Status"])}
+                        </div>)})}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
         </div>
       </section>
   );
@@ -113,30 +224,3 @@ export default function Detials() {
 
 
 
-// {store.list.length !== 0 ? (
-//   store.list.map((item, index) => (
-//     <div className="products">
-// <h3 className="title">...</h3>
-// <div className="item" key={index}>
-// <span className="price">{item["Task Info"]}</span>
-// <p className="item-name">Task Info</p>
-// <p className="item-description">Lorem ipsum dolor sit amet</p>
-// </div>
-// <div className="item">
-// <span className="price">{item["ID Info"]}</span>
-// <p className="item-name">ID No.</p>
-// <p className="item-description">Lorem ipsum dolor sit amet</p>
-// </div>
-// <div className="item">
-// <span className="price">{item["Created"]}</span>
-// <p className="item-name">CREATED ON</p>
-// <p className="item-description">Lorem ipsum dolor sit amet</p>
-// </div>
-// <div className="item">
-// <span className="price"><label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label></span>
-// <p className="item-name">Status</p>
-// <p className="item-description">Lorem ipsum dolor sit amet</p>
-// </div>
-// <div className="total">Added Description<span className="price">Change</span></div>
-// </div>
-// ))):("hi")}

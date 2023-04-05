@@ -71,6 +71,7 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+    
   }
   
   .table,
@@ -90,6 +91,11 @@
     padding: 0;
     text-transform: uppercase;
     text-align: center;
+  }
+
+  #switchIcon, .switchIcon{
+    text-align: center;
+    width: 100px;
   }
 
   /* #up,#down{

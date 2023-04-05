@@ -8,11 +8,11 @@ export default function Navbar () {
 
 
 		
-	<nav className="navbar navbar-expand-lg bg-body-tertiary bg-black">
+	<nav className="navbar navbar-expand-lg bg-black">
     <div className="container">
 		
 	<Link to="/">
-	<div className="navbar-brand text-white">Start Bootstrap</div>
+	<div className="text-white fs-3" >Home</div>
 
 	</Link>
 	  <button
@@ -24,21 +24,24 @@ export default function Navbar () {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon" id="navbarIcon" ></span>
+            <span className="navbar-toggler-icon"  id="navbarIcon" ></span>
           </button>
 	  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto text-center ">
-			<Link  className="nav-link text-white" to="/">
-				Home
-			</Link>
 			<Link  className="nav-link text-white" to="/todo">
-				Todo-list
+      <p className="fs-6 m-0" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+        Todo-list
+        </p>
 			</Link>
 			<Link  className="nav-link text-white" to="/table">
-				Table
+      <p className="fs-6 m-0" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+        Table
+        </p>
 			</Link>
       <Link  className="nav-link text-white" to="/detials">
-				Details
+      <p className="fs-6 m-0" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+        Details
+        </p>
 			</Link>
             </div>
           </div>

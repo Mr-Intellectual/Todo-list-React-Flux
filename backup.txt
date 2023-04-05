@@ -10,3 +10,85 @@
           </div>
         </div>
       </div>
+
+
+
+
+{/* <div className="modal fade" id="Modal" tabIndex="-1" style="{{ store.showModel ? 'display: block;' : '' }}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div className="modal-dialog modal-dialog-centered">
+<div className="modal-content">
+  <div className="modal-header">
+  <h1 className="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div className="modal-body">
+  </div>
+</div>
+</div>
+</div> */}
+
+
+{/* <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-black">
+                            ...
+                          </div>
+                          </div> */}
+
+
+
+// {store.list.length !== 0 ? (
+//   store.list.map((item, index) => (
+//     <div className="products">
+// <h3 className="title">...</h3>
+// <div className="item" key={index}>
+// <span className="price">{item["Task Info"]}</span>
+// <p className="item-name">Task Info</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="item">
+// <span className="price">{item["ID Info"]}</span>
+// <p className="item-name">ID No.</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="item">
+// <span className="price">{item["Created"]}</span>
+// <p className="item-name">CREATED ON</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="item">
+// <span className="price"><label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label></span>
+// <p className="item-name">Status</p>
+// <p className="item-description">Lorem ipsum dolor sit amet</p>
+// </div>
+// <div className="total">Added Description<span className="price">Change</span></div>
+// </div>
+// ))):("hi")}
+
+
+
+
+
+            {/* {<div className="products">
+              <h3 className="title">...</h3>
+              <div className="item">
+                <span className="price">...</span>
+                <p className="item-name">Task Info</p>
+                <p className="item-description">Lorem ipsum dolor sit amet</p>
+              </div>
+              <div className="item">
+                <span className="price">123456</span>
+                <p className="item-name">ID No.</p>
+                <p className="item-description">Lorem ipsum dolor sit amet</p>
+              </div>
+              <div className="item">
+                <span className="price">Id</span>
+                <p className="item-name">CREATED ON</p>
+                <p className="item-description">Lorem ipsum dolor sit amet</p>
+              </div>
+              <div className="item">
+                <span className="price">Id</span>
+                <p className="item-name">Status</p>
+                <p className="item-description">Lorem ipsum dolor sit amet</p>
+              </div>
+              <div className="total">Added Description<span className="price">Change</span></div>
+            </div>} */}

@@ -9,46 +9,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"ID Info": 12345,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
+					"Memo":"",
 
 				},
 				{
 					"Task Info": "1--",
-					"ID Info": 12345,
+					"ID Info": 63283,
 					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
+					"Status": { "Status": "Completed", "Color": "success" },
+					"Memo":"",
 
 				},
 				{
 					"Task Info": "2--",
-					"ID Info": 12345,
+					"ID Info": 19242,
 					"Created": "Jan. 23, 2023",
 					"Status": { "Status": "Pending", "Color": "danger" },
+					"Memo":"",
 
 				},
 				{
 					"Task Info": "3--",
-					"ID Info": 12345,
+					"ID Info": 17492,
 					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
+					"Status": { "Status": "Completed", "Color": "success" },
+					"Memo":"",
 
 				},
 				{
 					"Task Info": "4--",
-					"ID Info": 12345,
+					"ID Info": 13793,
 					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
+					"Status": { "Status": "Fixed", "Color": "info" },
+					"Memo":"",
 
 				},
 				{
 					"Task Info": "5--",
-					"ID Info": 12345,
+					"ID Info": 91484,
 					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
+					"Status": { "Status": "In progress", "Color": "warning" },
+					"Memo":"",
 
 				},
 			],
+			statusArr:[
+				{ "Status": "Pending", "Color": "danger" },
+				{ "Status": "In progress", "Color": "warning" },
+				{ "Status": "Fixed", "Color": "info" },
+				{ "Status": "50% Complete", "Color": "primary" },
+				{ "Status": "Completed", "Color": "success" }
+			],
 			holder:"",
 			switch: false,
+			details:[],
 				
 		},
 		actions: {
@@ -76,6 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"ID Info": Info.ID,
 					"Created": Info.Date,
 					"Status": Info.Status,
+					"Memo":""
 				  };
 				//   console.log(newObject);
 				//   console.log(store);
@@ -124,9 +139,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					{ "Status": "Pending", "Color": "danger" },
 					{ "Status": "In progress", "Color": "warning" },
 					{ "Status": "Fixed", "Color": "info" },
+					{ "Status": "50% Complete", "Color": "primary" },
 					{ "Status": "Completed", "Color": "success" }
 				  ];
-				  let statIndex = Math.floor(Math.random() * 4);
+				  let statIndex = Math.floor(Math.random() * statusArr.length);
 				  let month = [
 					"Jan.",
 					"Feb.",
@@ -182,70 +198,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 						i.setAttribute("data-bs-toggle", "modal");
 						i.setAttribute("data-bs-target", "#Modal");
 						i.setAttribute("data-bs-whatever", "@getbootstrap");
-						i.innerHTML += `<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div className="modal-dialog modal-dialog-centered">
-						<div className="modal-content">
-						  <div className="modal-header">
-							<h1 className="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
-							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						  </div>
-						  <div className="modal-body">
-						  </div>
-						</div>
-					  </div>
-					</div>`
-					console.log(i.innerText)
 					})
 					
 					statusButton = true
 					setStore({ switch: statusButton })
 				}
 			},
-			statusIcon:(e)=>{
-				const store = getStore();
-				const switchValue = store.switch;
-
-			// 	e.target.innerHTML += `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			// 	<div class="modal-dialog modal-dialog-centered">
-			// 	  <div class="modal-content">
-			// 		<div class="modal-header">
-			// 		  <h1 class="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
-			// 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			// 		</div>
-			// 		<div class="modal-body">
-			// 		</div>
-			// 	  </div>
-			// 	</div>
-			//   </div>`
-				const className = e.target.attributes
 			
-				console.log(className)
+			
+			// statusIcon:(e)=>{
+			// 	const store = getStore();
+			// 	const switchValue = store.switch;
 
-				let statusArr = [
-					{ "Status": "Pending", "Color": "danger" },
-					{ "Status": "In progress", "Color": "warning" },
-					{ "Status": "Fixed", "Color": "info" },
-					{ "Status": "Completed", "Color": "success" }
-				];
-				if(switchValue === true){
-					// document.querySelector("#statusIcon").parent.innerHTML +=`<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    				// 	     <div className="modal-dialog modal-dialog-centered">
-					// 	 	<div className="modal-content">
-					// 	 	  <div className="modal-header">
-					// 	 		<h1 className="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
-					// 	 		<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					// 	 	  </div>
-					// 	 	  <div className="modal-body">
-					// 	 	  </div>
-					// 	 	</div>
-					// 	   </div>
-					// 	 </div>`
-					console.log(document.querySelector("#statusIcon").parentNode)
-					console.log(e.target)
-					// setStore({ switch: false })
+			// // 	e.target.innerHTML += `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			// // 	<div class="modal-dialog modal-dialog-centered">
+			// // 	  <div class="modal-content">
+			// // 		<div class="modal-header">
+			// // 		  <h1 class="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+			// // 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			// // 		</div>
+			// // 		<div class="modal-body">
+			// // 		</div>
+			// // 	  </div>
+			// // 	</div>
+			// //   </div>`
+			// 	const className = e.target.attributes
+			
+			// 	console.log(className)
 
-				}
-			},
+				
+			// 	if(switchValue === true){
+			// 		// document.querySelector("#statusIcon").parent.innerHTML +=`<div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    		// 		// 	     <div className="modal-dialog modal-dialog-centered">
+			// 		// 	 	<div className="modal-content">
+			// 		// 	 	  <div className="modal-header">
+			// 		// 	 		<h1 className="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+			// 		// 	 		<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			// 		// 	 	  </div>
+			// 		// 	 	  <div className="modal-body">
+			// 		// 	 	  </div>
+			// 		// 	 	</div>
+			// 		// 	   </div>
+			// 		// 	 </div>`
+			// 		console.log(document.querySelector("#statusIcon").parentNode)
+			// 		console.log(e.target)
+			// 		// setStore({ switch: false })
+
+			// 	}
+			// },
 			
 			displayTrash:(e)=>{
 
@@ -322,7 +322,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  
 			  
 			gotoPage:(i)=>{
-				console.log("page", i)
+				const store = getStore();
+				let addDetails;
+				console.log(store.details)
+				store.list.map((item, index)=>{
+					
+					if(item["ID Info"]=== i){
+						console.log("I got it", item ,i)
+						addDetails = item
+						return addDetails
+					}
+				})
+				setStore({ details: [addDetails] });
+
+				console.log(store.details)
 			},
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

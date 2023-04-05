@@ -1,6 +1,5 @@
 import React,{ useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
 
 import { Context } from "./store/appContext";
 
@@ -32,9 +31,8 @@ const Layout = () => {
 	return (
 		<div onClick={(e)=>actions.ranClick(e)} id="main" >
 			<BrowserRouter basename={basename}>
-				<ScrollToTop>
 					<Navbar />
-					<div className="container-xxl hv-100" >
+					<div className="container-xxl hv-100 mt-3" >
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/todo" element={<Todo/>} />
@@ -44,7 +42,6 @@ const Layout = () => {
 					</Routes>
 					</div>
 					<Footer />
-				</ScrollToTop>
 			</BrowserRouter>
 		</div>
 	);
