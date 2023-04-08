@@ -3,40 +3,42 @@ import '../../styles/details.css'
 import { Context } from "../store/appContext";
 
 
+
 export default function Detials() {
   const { store, actions } = useContext(Context);
+  console.log(store)
   return (
     //Some html code should go here
     <section className="payment-form dark">
         <div className="container">
           <div className="block-heading">
-            <h2>Task Details Page</h2>
-            <p>You can modify your task on this page.</p>
+            <h1>Task Details Page</h1>
+            <p className="fs-5">You can modify your task on this page.</p>
           </div>
           
 {store.details.length !== 0 ? (
   store.details.map((item, index) => (
-    <form className={"border-top border-4 border-"+ item["Status"]["Color"]}>
-    <div className="products" key={index}>
+    <form className={"border-top border-4 border-"+ item["Status"]["Color"]} key={index}>
+    <div className="products" >
 <div className="item">
-<span className="price">{item["Task Info"]}</span>
 <p className="item-name">Task Info</p>
+<span className="price text-break text-right">{item["Task Info"]}</span>
 </div>
 <div className="item">
-<span className="price">{item["ID Info"]}</span>
 <p className="item-name">ID No.</p>
+<span className="price">{item["ID Info"]}</span>
 </div>
 <div className="item">
-<span className="price">{item["Created"]}</span>
 <p className="item-name">CREATED ON</p>
+<span className="price">{item["Created"]}</span>
 </div>
 <div className="item">
-<span className="price"><label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label></span>
 <p className="item-name">Status</p>
+<span className="price"><label className={"badge badge-" + item["Status"]["Color"]}>{item["Status"]["Status"]}</label></span>
 </div>
 <div className="m-0 ">
   <p className="mt-0 text-center text-uppercase fw-bold"> Added Memo</p>
-  <div className="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it?
+  <div className="p-2" id="memoBox">{item["Memo"]}
 </div>
 </div>
 </div>
@@ -219,8 +221,24 @@ export default function Detials() {
 
 
 
+// const url = 'https://cors-anywhere.herokuapp.com/https://asdfast.beobit.net/api/?type=paragraph&length=1&startLorem=true';
 
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data); // Replace with your API response handling
+//   })
+//   .catch(error => {
+//     console.error(error); // Replace with your error handling
+//   });
 
+// const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://asdfast.beobit.net/api/?type=word&length=50&startLorem=true');
 
-
-
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data.contents); // Replace with your API response handling
+//   })
+//   .catch(error => {
+//     console.error(error); // Replace with your error handling
+//   });

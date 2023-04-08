@@ -1,7 +1,7 @@
-/* * {
-  outline: 1px dashed red;
-  min-height: 10px;
-} */
+* {
+  /* outline: 1px dashed red; */
+  /* min-height: 10px; */
+}
 
 
 .payment-form {
@@ -131,6 +131,10 @@
 
 .Label{
   height: 40px;
+}
+
+#memoBox{
+  text-align: justify;
 }
 
 /* @media (min-width: 576px) {

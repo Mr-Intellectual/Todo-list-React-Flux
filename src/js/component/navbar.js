@@ -12,7 +12,7 @@ export default function Navbar () {
     <div className="container">
 		
 	<Link to="/">
-	<div className="text-white fs-3" >Home</div>
+	<div className="navbar-brand text-white fs-3" >Home</div>
 
 	</Link>
 	  <button

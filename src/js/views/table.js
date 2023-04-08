@@ -14,15 +14,32 @@ export default function Table() {
                 {/* <p className="card-description">Fix this</p> */}
                 <div className="table-responsive pb-0">
                   <table className="table m-0">
-                    <thead>
-                      <tr>
-                        <th className="py-4">Task Info</th>
-                        <th className="py-4">ID No.</th>
-                        <th className="py-4">Created On</th>
-                        <th className="py-2">
-                          <p className="py-0 m-0">
+                    <thead className="">
+                      <tr className="" id="headerRow">
+                        <th className="">
+                          <p className="p-0 mb-3 ">
+                          Task Info
+                          </p>
+                          <div className="mb-2 p-1"></div>
+                          </th>
+                        <th className="">
+                          <p className="p-0 mb-3">
+                          ID No.
+                          </p>
+                          <div className="mb-2 p-1"></div>
+                          </th>
+                        <th className="">
+                          <p className="p-0 mb-3">
+                          Created On
+                          </p>
+                          <div className="mb-2 p-1"></div>
+                          </th>
+                        <th className="">
+                          <p className="p-0 mb-0">
                             Status
                           </p>
+                          {store.list.length === 0? <div className="mb-4 p-1"></div>: (
+                          <div className="">
                           <button
                             onClick={(e) => actions.switchStatusButton(e)}
                             className=" btn btn-outline-black btn-sm mx-0 "
@@ -31,12 +48,34 @@ export default function Table() {
                           >
                             <i className="fa-solid fa-shuffle" id="statusIcon"></i>
                           </button>
+                          </div>
+                          )}
+                          
                         </th>
-                        <th className="pb-1">
-                          <p className="py-0 m-0">
+                        <th className="">
+                          <p className="p-0 mb-0">
                             Modify
                           </p>
+                          {store.list.length === 0?  <div className="mb-4 p-1"></div>: (
+                          <div className="">
                           <button
+                            onClick={(e) => actions.displayArrow(e)}
+                            className="btn btn-outline-black btn-sm mx-1"
+                            type="button"
+                            id="arrow"
+                          >
+                            <i className="fa-solid fa-up-down"></i>
+                          </button>
+                          <button
+                            onClick={(e) => actions.displayTrash(e)}
+                            className="btn btn-outline btn-sm mx-1"
+                            type="button"
+                            id="dTrash"
+                          >
+                            <i className="fa-regular fa-trash-can"></i>
+                          </button>
+                        </div>)}
+                          {/* <button
                             onClick={(e) => actions.displayArrow(e)}
                             className=" btn btn-outline-black btn-sm mx-1 "
                             type="button"
@@ -51,10 +90,20 @@ export default function Table() {
                             id="dTrash"
                           >
                             <i className="fa-regular fa-trash-can"></i>
-                          </button>
+                          </button> */}
                         </th>
-                        <th className="py-4">Memo Added</th>
-                        <th className="py-4">Go To Page</th>
+                        <th className="">
+                          <p className="p-0 mb-3">
+                          Memo Added
+                          </p>
+                          <div className="mb-2 p-1"></div>
+                          </th>
+                        <th className="">
+                        <p className="p-0 mb-3">
+                          Go To Page
+                        </p>
+                        <div className="mb-2 p-1"></div>
+                          </th>
                       </tr>
                     </thead>
 
@@ -65,7 +114,7 @@ export default function Table() {
 				{store.list.length !== 0 ? (
               		store.list.map((item, index) => (
                       <tr className="m-1" key={index}>
-                        <td className="pl-2 py-3 text-left">{item["Task Info"]}</td>
+                        <td className="pl-2 py-3 text-left text-break">{item["Task Info"]}</td>
                         <td className="py-3">{item["ID Info"]}</td>
                         <td className="py-3" >{item["Created"]}</td>
                         <td className="pt-3 pb-0">
@@ -103,9 +152,13 @@ export default function Table() {
                           </button>
                         </td>
                         <td className="py-2">
-                        
+                          {item["Memo"] === "" ? 
+                          <i className="fa-regular fa-square-minus fa-3x"></i>: 
+                          <i className="fa-regular fa-square-check fa-3x"></i>}
+                          
+                          
                         </td>
-                        <td className="">
+                        <td className="align-middle">
                           <Link  className="m-0 p-0" to="/detials">
                         <button
                             onClick={() => actions.gotoPage(item["ID Info"])}
@@ -119,9 +172,68 @@ export default function Table() {
                           </Link>
                         </td>
                       </tr>))):(
-                      <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3">
-                        Please add some task to the list...
-                      </li>)}
+                      // <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3">
+                      //   Please add some task to the list...
+                      // </li>
+                      <tr className="m-1">
+                        {/* <td className="pl-2 py-3 text-left">Task Info</td>
+                        <td className="py-3">ID Info</td>
+                        <td className="py-3" >Date</td>
+                        <td className="pt-3 pb-0">
+                          <label className="badge badge-secondary" id="switchIcon">
+                            Nothing
+                          </label>
+                        </td>
+                        <td className="py-2">
+                          <button
+                            onClick={() => actions.moveItemUp(index)}
+                            style={{ display:"show" }}
+                            className=" btn btn-outline-dark btn-sm mx-1 up"
+                            type="button"
+                            id="bUp"
+                          >
+                            <i className="fa-solid fa-caret-up fa-2x"></i>
+                          </button>
+                          <button
+                            onClick={() => actions.moveItemDown(index)}
+                            style={{ display:"show" }}
+                            className=" btn btn-outline-dark btn-sm mx-1 down"
+                            type="button"
+                            id="bDown"
+                          >
+                            <i className="fa-solid fa-caret-down fa-2x"></i>
+                          </button>
+                          <button
+                            onClick={() => actions.trashIcon(index)}
+                            style={{ display:"none" }}
+                            className=" btn btn-outline-danger btn-sm bTrash"
+                            type="button"
+                            id="bTrash"
+                          >
+                            <i className="fa-regular fa-trash-can fa-2x"></i>
+                          </button>
+                        </td>
+                        <td className="py-2">
+                          <i className="fa-regular fa-square-minus fa-3x"></i>
+                        </td> */}
+                        
+                        <td colSpan="7" className="align-middle">
+                          <div>
+                            <p className="mt-4 fs-4">There is Nothing Here... Click the Button to Add Tasks</p>
+                          </div>
+                          <Link  className="m-4 p-2 d-grid" to="/todo">
+                        <button
+                            className=" btn btn-outline-dark btn-lg my-1"
+                            type="button"
+                            id="link"
+                          >
+                            <i className="fa-regular fa-hand-point-right pr-2 m-1 fa-lg"></i>
+                            Click Here To Add Tasks
+                          </button>
+                          </Link>
+                        </td>
+                      </tr>
+                      )}
                     </tbody>
                   </table>
                   <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

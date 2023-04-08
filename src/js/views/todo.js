@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import '../../styles/todo.css'
 
 import { Context } from "../store/appContext";
@@ -35,6 +36,20 @@ export default function Todo() {
         >
           <i className="fa-regular fa-square-check"></i>
         </button>
+        {store.list.length !== 0 ? (
+        <div>
+
+        <Link className="rounded-end" to="/table" >
+        <button
+          className="btn btn-outline-primary p-2 rounded-0 "
+          type="button"
+          id="click"
+        >
+          <i className="fa-solid fa-share-from-square mr-2"></i>
+          Goto Table 
+        </button>
+        </Link>
+        </div>): ""}
       </div>
       <div className="input-group mb-1">
         <ul className="w-100 list-group">
@@ -42,7 +57,7 @@ export default function Todo() {
           {store.list.length !== 0 ? (
               store.list.map((item, index) => (
                 <li
-                  className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary"
+                  className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary p-2 overflow-scroll" 
                   key={index}
                 >
                   {item["Task Info"]}
@@ -57,7 +72,7 @@ export default function Todo() {
                 </li>
               ))
             ) : (
-              <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3">
+              <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3 p-2">
                 Please add some task to the list...
               </li>
             )}

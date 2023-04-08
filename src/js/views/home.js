@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Home = () => (
 
@@ -8,9 +9,11 @@ export const Home = () => (
         <p className="col-md-12 fs-4 mx-auto my-4">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione magni vel aliquid, natus laudantium a beatae adipisci ab quam soluta pariatur, blanditiis totam corrupti sint suscipit! Dolor nam perferendis voluptatibus.
         </p>
-        <button className="btn btn-primary btn-lg float-center mt-5 mb-3" type="button">
-        Click Here Start Entering Into The ToDo List
-        </button>
+        <Link to="/todo">
+          <button className="btn btn-primary btn-lg float-center mt-5 mb-3" type="button">
+            Click Here Start Entering Into The ToDo List
+          </button>
+        </Link>
       </div>
     </div>
 	  

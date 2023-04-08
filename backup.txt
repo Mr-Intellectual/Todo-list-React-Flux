@@ -92,3 +92,45 @@
               </div>
               <div className="total">Added Description<span className="price">Change</span></div>
             </div>} */}
+
+
+
+
+
+
+
+
+
+
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '2b97ec0eb7msh502fae73bab3846p1c7345jsnc590a7b2d586',
+		'X-RapidAPI-Host': 'montanaflynn-lorem-text-generator.p.rapidapi.com'
+	}
+};
+
+fetch('https://montanaflynn-lorem-text-generator.p.rapidapi.com/paragraph?count=2&length=3', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
+
+
+
+
+
+
+  <button
+          onClick={(e)=>{
+            console.log(e.view)
+            //location.href=""
+          }}
+          className="btn btn-outline-primary"
+          type="button"
+          id="click"
+        >
+          <i className="fa-solid fa-share-from-square mr-2"></i>
+          Goto Table 
+        </button>

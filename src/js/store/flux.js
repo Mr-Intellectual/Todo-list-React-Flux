@@ -12,46 +12,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"Memo":"",
 
 				},
-				{
-					"Task Info": "1--",
-					"ID Info": 63283,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Completed", "Color": "success" },
-					"Memo":"",
+				// {
+				// 	"Task Info": "1--",
+				// 	"ID Info": 63283,
+				// 	"Created": "Jan. 23, 2023",
+				// 	"Status": { "Status": "Completed", "Color": "success" },
+				// 	"Memo":"hello",
 
-				},
-				{
-					"Task Info": "2--",
-					"ID Info": 19242,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
-					"Memo":"",
+				// },
+				// {
+				// 	"Task Info": "2--",
+				// 	"ID Info": 19242,
+				// 	"Created": "Jan. 23, 2023",
+				// 	"Status": { "Status": "Pending", "Color": "danger" },
+				// 	"Memo":"",
 
-				},
-				{
-					"Task Info": "3--",
-					"ID Info": 17492,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Completed", "Color": "success" },
-					"Memo":"",
+				// },
+				// {
+				// 	"Task Info": "3--",
+				// 	"ID Info": 17492,
+				// 	"Created": "Jan. 23, 2023",
+				// 	"Status": { "Status": "Completed", "Color": "success" },
+				// 	"Memo":"",
 
-				},
-				{
-					"Task Info": "4--",
-					"ID Info": 13793,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Fixed", "Color": "info" },
-					"Memo":"",
+				// },
+				// {
+				// 	"Task Info": "4--",
+				// 	"ID Info": 13793,
+				// 	"Created": "Jan. 23, 2023",
+				// 	"Status": { "Status": "Fixed", "Color": "info" },
+				// 	"Memo":"",
 
-				},
-				{
-					"Task Info": "5--",
-					"ID Info": 91484,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "In progress", "Color": "warning" },
-					"Memo":"",
+				// },
+				// {
+				// 	"Task Info": "5--",
+				// 	"ID Info": 91484,
+				// 	"Created": "Jan. 23, 2023",
+				// 	"Status": { "Status": "In progress", "Color": "warning" },
+				// 	"Memo":"",
 
-				},
+				// },
 			],
 			statusArr:[
 				{ "Status": "Pending", "Color": "danger" },
@@ -63,6 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			holder:"",
 			switch: false,
 			details:[],
+			memoHolder:"",
 				
 		},
 		actions: {
@@ -79,8 +80,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				const Info = getActions().ranInfo();
 				const inputValue = store.holder;
+				const memo = store.memoHolder;
 				// console.log(inputValue);
-				 let input1 = e.target.parentNode.querySelector('#input1')
+				 let input1 = document.querySelector('#input1')
 				//  console.log("fdfvjh",input1.value)
 				if (inputValue === "") {
 				  alert("The input cannot be empty");
@@ -90,14 +92,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"ID Info": Info.ID,
 					"Created": Info.Date,
 					"Status": Info.Status,
-					"Memo":""
+					"Memo": memo
 				  };
 				//   console.log(newObject);
-				//   console.log(store);
+				  console.log(store);
 
 				  const newList = [...store.list, newObject];
 				  setStore({ list: newList });
 				  setStore({ holder: "" }); // reset the input value after adding a new task
+				  setStore({ memoHolder: "" });
 				//   console.log(e.target.parentNode.querySelector('#input1'))
 				}
 				input1.value = ""
@@ -112,9 +115,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			keyPress: (e) => {
 				const store = getStore();
 				const Info = getActions().ranInfo();
+				const memo = store.memoHolder;
 				const inputValue = store.holder;
+				console.log(Info)
 				// console.log(inputValue);
-				 let input1 = e.target.parentNode.querySelector('#input1')
+				 let input1 = document.querySelector('#input1')
 				if (e.key === "Enter" && inputValue === "") {
 				  alert("The input cannot be empty");
 				} else if (e.key === "Enter"){
@@ -123,6 +128,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"ID Info": Info.ID,
 					"Created": Info.Date,
 					"Status": Info.Status,
+					"Memo": memo
 				  };
 				  console.log(newObject);
 				  console.log(store);
@@ -130,11 +136,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const newList = [...store.list, newObject];
 				  setStore({ list: newList });
 				  setStore({ holder: "" }); // reset the input value after adding a new task
+				  setStore({ memoHolder: "" });
 				input1.value = ""
 				}
 			},
 
-			ranInfo:()=>{
+			ranInfo: ()=>{
+				const store = getStore();
 				let statusArr = [
 					{ "Status": "Pending", "Color": "danger" },
 					{ "Status": "In progress", "Color": "warning" },
@@ -160,12 +168,125 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  let day = Math.floor(Math.random() * 27) + 1;
 				  let year = "20" + (Math.floor(Math.random() * 1) + 23);
 				  const newRanInfo = {
-					ID: Math.floor(Math.random() * Math.pow(10, 6)),
-					Status: statusArr[statIndex],
-					Date: `${month[Math.floor(Math.random() * month.length)]} ${day} ${year}`
-				  };
+					"ID": Math.floor(Math.random() * Math.pow(10, 6)),
+					"Status": statusArr[statIndex],
+					"Date": `${month[Math.floor(Math.random() * month.length)]} ${day} ${year}`,
+					"Memo": ""
+				};
+				//Added not to spam the API
+				if(store.memoHolder === ""){
+					setStore({ memoHolder: "Waiting" });
+					getActions().fetchData();
+				}
+				setTimeout(2000)
+				console.log("memo",getStore().memoHolder)
 				return newRanInfo;
 			},
+
+			// ranInfo: async () => {
+			// 	let statusArr = [
+			// 	  { "Status": "Pending", "Color": "danger" },
+			// 	  { "Status": "In progress", "Color": "warning" },
+			// 	  { "Status": "Fixed", "Color": "info" },
+			// 	  { "Status": "50% Complete", "Color": "primary" },
+			// 	  { "Status": "Completed", "Color": "success" }
+			// 	];
+			// 	let statIndex = Math.floor(Math.random() * statusArr.length);
+			// 	let month = [
+			// 	  "Jan.",
+			// 	  "Feb.",
+			// 	  "Mar.",
+			// 	  "Apr.",
+			// 	  "May",
+			// 	  "June",
+			// 	  "July",
+			// 	  "Aug.",
+			// 	  "Sep.",
+			// 	  "Oct.",
+			// 	  "Nov.",
+			// 	  "Dec."
+			// 	];
+			// 	let day = Math.floor(Math.random() * 27) + 1;
+			// 	let year = "20" + (Math.floor(Math.random() * 1) + 23);
+			// 	const memo = await getActions().fetchData();
+			// 	console.log(memo)
+			// 	const newRanInfo = {
+			// 	  "ID": Math.floor(Math.random() * Math.pow(10, 6)),
+			// 	  "Status": statusArr[statIndex],
+			// 	  "Date": `${month[Math.floor(Math.random() * month.length)]} ${day} ${year}`,
+			// 	  "Memo": memo
+			// 	};
+			// 	// console.log(newRanInfo)
+			// 	return Promise.resolve(newRanInfo);
+			//   },
+
+
+			// fetchData: () => {
+			// 	console.log("called")
+			// 	let ranInt = Math.floor(Math.random() * 21) + 95;
+			// 	const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://asdfast.beobit.net/api/?type=word&length='+ ranInt +'&startLorem=true');
+			// 	return fetch(url)
+			// 	  .then(response => response.json())
+			// 	  .then(data => {
+			// 		return data.contents;
+			// 	  })
+			// 	  .then(contents => {
+			// 		const parsedJson = JSON.parse(contents);
+			// 		// return parsedJson.text
+			// 	// 	console.log(parsedJson.text)
+			// 	  setStore({memoHolder: parsedJson.text })
+			// 	  })
+			// 	  .catch(error => {
+			// 		console.error(error);
+			// 	  });
+			//   },
+
+			fetchData: () => {
+				console.log("called")
+				let ranInt = Math.floor(Math.random() * 21) + 95;
+				const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://asdfast.beobit.net/api/?type=word&length='+ ranInt +'&startLorem=true');
+				 return new Promise((resolve, reject) => {
+					// Time control nod to spam the api
+				   setTimeout(() => {
+					fetch(url)
+					  .then(response => response.json())
+					  .then(data => {
+						const parsedJson = JSON.parse(data.contents);
+						console.log("JSON",parsedJson.text)
+						setStore({ memoHolder: parsedJson.text });
+						resolve(parsedJson.text);
+					  })
+					  .catch(error => {
+						console.error(error);
+						reject(error);
+					  });
+				  }, 100); // 1 second delay
+				  console.log("memo-->",getStore().memoHolder)
+				});
+			  },
+			  
+			  
+			// fetchData: () => {
+				// console.log("called")
+			// 	let ranInt = Math.floor(Math.random() * 21) + 95;
+			// 	const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://asdfast.beobit.net/api/?type=word&length='+ ranInt +'&startLorem=true');
+			// 	return new Promise((resolve, reject) => {
+			// 	  setTimeout(() => {
+			// 		fetch(url)
+			// 		  .then(response => response.json())
+			// 		  .then(data => {
+			// 			const parsedJson = JSON.parse(data.contents);
+			// 			resolve(parsedJson.text);
+			// 		  })
+			// 		  .catch(error => {
+			// 			console.error(error);
+			// 			reject(error);
+			// 		  });
+			// 	  }, 2000); // delay in milliseconds (e.g., 1000 = 1 second)
+			// 	});
+			//   },
+			  
+
 			ranClick: (e) => {
 				const store = getStore();
 				const switchValue = store.switch;
@@ -249,9 +370,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			displayTrash:(e)=>{
 
-				let up = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bUp'),
-				down = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bDown'),
-				trash = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bTrash')
+				let up = document.querySelectorAll('#bUp'),
+				down = document.querySelectorAll('#bDown'),
+				trash = document.querySelectorAll('#bTrash')
 				up.forEach((i)=>{
 					i.style.display = "none"
 				})
@@ -264,9 +385,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			displayArrow:(e)=>{
-				let up = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bUp'),
-				down = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bDown'),
-				trash = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('#bTrash')
+				let up = document.querySelectorAll('#bUp'),
+				down = document.querySelectorAll('#bDown'),
+				trash = document.querySelectorAll('#bTrash')
 				up.forEach((i)=>{
 					i.style.display = ""
 				})
