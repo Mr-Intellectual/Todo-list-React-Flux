@@ -126,7 +126,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const newObject = {
 					"Task Info": inputValue,
 					"ID Info": Info.ID,
-					"Created": Info.Date,
+					"Created": Info.Created,
 					"Status": Info.Status,
 					"Memo": memo
 				  };
@@ -170,7 +170,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const newRanInfo = {
 					"ID": Math.floor(Math.random() * Math.pow(10, 6)),
 					"Status": statusArr[statIndex],
-					"Date": `${month[Math.floor(Math.random() * month.length)]} ${day} ${year}`,
+					"Created": `${month[Math.floor(Math.random() * month.length)]} ${day} ${year}`,
 					"Memo": ""
 				};
 				//Added not to spam the API
@@ -181,6 +181,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setTimeout(2000)
 				console.log("memo",getStore().memoHolder)
 				return newRanInfo;
+			},
+			ranDate:()=>{
+				const store = getStore();
+
+				let month = [
+					"Jan.",
+					"Feb.",
+					"Mar.",
+					"Apr.",
+					"May",
+					"June",
+					"July",
+					"Aug.",
+					"Sep.",
+					"Oct.",
+					"Nov.",
+					"Dec."
+				  ];
+				  let day = Math.floor(Math.random() * 27) + 1;
+				  let year = "20" + (Math.floor(Math.random() * 1) + 23);
+				  let date = `${month[Math.floor(Math.random() * month.length)]} ${day} ${year}`
+				  let newDate ={
+					"Task Info": store.details[0]["Task Info"],
+					"ID Info": store.details[0]["ID Info"],
+					"Status": store.details[0]["Status"],
+					"Created": date,
+					"Memo": store.details[0]["Memo"]
+				};
+				  setStore({ details: [newDate] });
+				  console.log(newDate)
 			},
 
 			// ranInfo: async () => {
@@ -456,7 +486,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				setStore({ details: [addDetails] });
 
-				console.log(store.details)
+				console.log("looking for",store.details[0]["Created"])
 			},
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

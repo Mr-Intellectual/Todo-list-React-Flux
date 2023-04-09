@@ -5,7 +5,7 @@ import { Context } from "./store/appContext";
 
 
 //Views
-import { Home } from "./views/home";
+import  Home  from "./views/home";
 // import { Demo } from "./views/demo";
 // import { Single } from "./views/single";
 import injectContext from "./store/appContext";

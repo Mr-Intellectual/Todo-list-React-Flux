@@ -30,3 +30,6 @@
     background-size: 100%;
     filter: brightness(100%) invert(1) !important;
 }
+#homeDisplay{
+  text-align: justify;
+}
