@@ -1,35 +1,29 @@
 /* 
     General Styles
 */
-/* .navbar-toggler-icon{
-    filter: invert(97%) sepia(0%) saturate(7463%) hue-rotate(77deg) brightness(110%) contrast(100%);
-    filter: brightness(100%) invert(1) !important;
-
-
-  }
-  #navbarIcon{
-    filter: brightness(100%) invert(1) !important;
-  } */
-  #main{
-    min-height: 100vh;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
-  .Footer{
-    margin-top: auto;
-  }
-  .navbar-toggler-icon {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    vertical-align: middle;
-    background-image: var(--bs-navbar-toggler-icon-bg) !important;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-    filter: brightness(100%) invert(1) !important;
+#main {
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }
-#homeDisplay{
+
+.Footer {
+  margin-top: auto;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: var(--bs-navbar-toggler-icon-bg) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  filter: brightness(100%) invert(1) !important;
+}
+
+#homeDisplay {
   text-align: justify;
 }

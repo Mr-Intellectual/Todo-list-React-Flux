@@ -10,77 +10,79 @@ export default function Todo() {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    // actions.checkIcon();
+
   }, []);
-  
+
 
   return (
     //Some html code should go here
     <>
-    <div className="p-1 mt-2">
-      <div className="p-4 mt-5">
-      <div className="input-group mb-3" id="input">
-        <input
-          id="input1"
-          type="text"
-          className="form-control p-2"
-          placeholder="What do you need to do...?"
-          onChange={(e) => actions.setHolder(e)}
-          onKeyPress={(e)=>actions.keyPress(e)}
-        />
-        <button
-          onClick={(e)=>actions.checkIcon(e)}
-          className="btn btn-outline-success"
-          type="button"
-          id="click"
-        >
-          <i className="fa-regular fa-square-check"></i>
-        </button>
-        {store.list.length !== 0 ? (
-        <div>
+      <div className="p-1 mt-2">
+        <div className="p-4 mt-5">
+          <div className="input-group mb-3" id="input">
+            <input
+              id="input1"
+              type="text"
+              className="form-control p-2"
+              placeholder="What do you need to do...?"
+              onChange={(e) => actions.setHolder(e)}
+              onKeyPress={(e) => actions.keyPress(e)}
+            />
+            <button
+              onClick={(e) => actions.checkIcon(e)}
+              className="btn btn-outline-success"
+              type="button"
+              id="click"
+            >
+              <i className="fa-regular fa-square-check"></i>
+            </button>
+            {store.list.length !== 0 ? (
+              <div id="lGoto">
 
-        <Link className="rounded-end" to="/table" >
-        <button
-          className="btn btn-outline-primary p-2 rounded-0 "
-          type="button"
-          id="click"
-        >
-          <i className="fa-solid fa-share-from-square mr-2"></i>
-          Goto Table 
-        </button>
-        </Link>
-        </div>): ""}
-      </div>
-      <div className="input-group mb-1">
-        <ul className="w-100 list-group">
-          <>
-          {store.list.length !== 0 ? (
-              store.list.map((item, index) => (
-                <li
-                  className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary p-2 overflow-scroll" 
-                  key={index}
-                >
-                  {item["Task Info"]}
+                <Link className="rounded-end" to="/table" >
                   <button
-                    onClick={() => actions.trashIcon(index)}
-                    className=" btn btn-outline-danger btn-sm"
+                    className="btn btn-outline-primary p-2 rounded-0 rounded-end "
                     type="button"
-                    id="trash"
+                    id="goto"
                   >
-                    <i className="fa-regular fa-trash-can"></i>
+                    <i className="fa-solid fa-share-from-square mr-2"></i>
+                    Goto Table
                   </button>
-                </li>
-              ))
-            ) : (
-              <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3 p-2">
-                Please add some task to the list...
-              </li>
-            )}
-          </>
-        </ul>
+                </Link>
+              </div>) : ""}
+          </div>
+          <div className="input-group mb-1">
+            <ul className="w-100 list-group">
+              <>
+                {store.list.length !== 0 ? (
+                  store.list.map((item, index) => (
+                    <li
+                      className="list-group-item d-flex justify-content-between align-items-center  border border-2 border border-primary p-1"
+                      key={index}
+                    >
+                      <p className="m-0 px-2 text-break">
+                        {item["Task Info"]}
+                      </p>
+                      <button
+                        onClick={() => actions.trashIcon(index)}
+                        className=" btn btn-outline-danger btn-sm"
+                        type="button"
+                        id="trash"
+                      >
+                        <i className="fa-regular fa-trash-can"></i>
+                      </button>
+                    </li>
+                  ))
+                ) : (
+                  <li className="list-group-item d-flex justify-content-between align-items-center border border-2 border border-primary border border-3 p-2">
+                    Please add some task to the list...
+                  </li>
+                )}
+              </>
+            </ul>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
     </>
   );
 }

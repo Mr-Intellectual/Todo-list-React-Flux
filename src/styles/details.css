@@ -43,7 +43,6 @@
 }
 
 .detail-form form {
-  /* border-top: 2px ; */
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
   background-color: #ffffff;
   padding: 0;
@@ -106,14 +105,10 @@
 .detail-form .Mod-details label {
   font-size: 12px;
   font-weight: 600;
-  /* margin-bottom: 15px;
-  color: #79818a; */
   text-transform: uppercase;
 }
 
 .detail-form .Mod-details button {
-  /* margin-top: 0.6em;
-  padding: 12px 0; */
   font-weight: 600;
 }
 
@@ -123,42 +118,19 @@
   margin-top: 5px;
 }
 
-#check,#date,#status,#memo{
+#check,
+#date,
+#status,
+#memo {
   width: 50px;
   height: 60px;
   align-items: center;
 }
 
-.Label{
+.Label {
   height: 40px;
 }
 
-#memoBox{
+#memoBox {
   text-align: justify;
 }
-
-/* @media (min-width: 576px) {
-  .detail-form .title {
-    font-size: 1.2em;
-  }
-
-  .detail-form .detail-Info {
-    padding: 40px;
-  }
-
-  .detail-form .detail-Info .item-name {
-    font-size: 1em;
-  }
-
-  .detail-form .detail-Info .Info {
-    font-size: 1em;
-  }
-
-  .detail-form .Mod-details {
-    padding: 40px 40px 30px;
-  }
-
-  .detail-form .Mod-details button {
-    margin-top: 2em;
-  }
-} */

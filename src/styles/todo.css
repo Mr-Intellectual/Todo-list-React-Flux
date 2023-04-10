@@ -1,53 +1,66 @@
-/* .list-group-item:nth-child(n+2){
-    border-top: 0 !important;
-  } */
-  
-  #input:has(#click:hover)::before,
-  #input:has(#click:hover)::after  {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 100%;
-    top: 0%;
-    left: 0%;
-    box-shadow: 0 0 25px#0dff00;
-    animation: glow-grow 2s ease-out infinite;
-    border-radius: 5px;
+#input:has(#click:hover)::before,
+#input:has(#click:hover)::after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+  box-shadow: 0 0 25px#0dff00;
+  animation: glow-grow 2s ease-out infinite;
+  border-radius: 5px;
+}
+
+#lGoto:has(#goto:hover)::before,
+#lGoto:has(#goto:hover)::after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+  box-shadow: 0 0 25px#0d6efd;
+  ;
+  animation: glow-grow 2s ease-out infinite;
+  border-radius: 5px;
+}
+
+ul li:has(#trash:hover)::before,
+ul li:has(#trash:hover)::after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+  box-shadow: 0 0 25px#ff0000;
+  animation: glow-grow 2s ease-out infinite;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+#input:has(#click:hover)::before,
+ul li:has(#trash:hover)::before {
+  animation-delay: 2;
+}
+
+#input:has(#click:hover)::after,
+ul li:has(#trash:hover)::after {
+  animation-delay: .30s;
+}
+
+@keyframes glow-grow {
+  0% {
+    opacity: 0;
+    transform: scale(1);
   }
-  
-  ul li:has(#trash:hover)::before,
-  ul li:has(#trash:hover)::after  {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 100%;
-    top: 0%;
-    left: 0%;
-    box-shadow: 0 0 25px#ff0000;
-    animation: glow-grow 2s ease-out infinite;
-    border-radius: 5px;
-    z-index: 1;
+
+  80% {
+    opacity: .5;
   }
-  
-  #input:has(#click:hover)::before,
-  ul li:has(#trash:hover)::before{
-    animation-delay: 2;
+
+  100% {
+    transform: scale(1.01);
+    opacity: 0;
   }
-  
-  #input:has(#click:hover)::after,
-  ul li:has(#trash:hover)::after {
-    animation-delay: .30s;
-  }
-  @keyframes glow-grow {
-    0% {
-      opacity: 0;
-      transform: scale(1);
-    }
-    80% {
-      opacity: .5;
-    }
-    100% {
-      transform: scale(1.01);
-      opacity: 0;
-    }
-  }
+}

@@ -1,6 +1,6 @@
 //import react into the bundle
-import React, { Profiler } from 'react';
-import {createRoot} from 'react-dom/client'
+import React from 'react';
+import { createRoot } from 'react-dom/client'
 
 
 
@@ -18,7 +18,7 @@ const root = createRoot(document.querySelector("#app"))
 //render your react application
 root.render(
 
-<Layout/>
+    <Layout />
 
 )
 
