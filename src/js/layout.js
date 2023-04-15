@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-// import { Context } from "./store/appContext";
+import { Context } from "./store/appContext";
 
 
 //Views
@@ -23,7 +23,7 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
-	// const { store, actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 
 	return (

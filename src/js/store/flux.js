@@ -1,3 +1,4 @@
+
 const getState = ({ getStore, getActions, setStore }) => {
 
 
@@ -61,7 +62,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{ "Status": "Completed", "Color": "success" }
 			],
 			holder: "",
-			switch: false,
+			statusIDHolder: [
+				{
+				"state":false,
+				"ID":0,
+				}
+			],
 			details: [
 				{
 					"Task Info": "1--",
@@ -113,7 +119,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			setHolder: (e) => {
-				e.preventDefault()
 				if (e.target.value) {
 					setStore({ holder: e.target.value });
 				}
@@ -129,6 +134,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (e.key === "Enter" && inputValue === "") {
 					alert("The input cannot be empty");
 				} else if (e.key === "Enter") {
+					
+					
 					const newObject = {
 						"Task Info": inputValue,
 						"ID Info": Info.ID,
@@ -230,12 +237,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			reFatch: ()=>{
+				const store = getStore();
+				const actions = getActions();
+			  
+				store.list.forEach(async (item, index) => {
+				  if ( item["Memo"] === "Waiting") {
+					await actions.fetchData();
+					console.log(item)
+					item["Memo"] = store.memoHolder
+				  }
+				});
+
+
+			},
+
 			switchStatusButton: (e) => {
 				//need code..
 				const store = getStore();
-				const switchValue = store.switch;
-				let statusButton = false,
-					status = document.querySelectorAll(".badge")
+				const switchValue = store.statusIDHolder[0]["ID"];
+				let status = document.querySelectorAll(".badge")
 
 				if (e.target.parentNode.parentNode.querySelector("#switch").id === "switch") {
 					status.forEach((i) => {
@@ -244,14 +265,105 @@ const getState = ({ getStore, getActions, setStore }) => {
 						i.setAttribute("data-bs-whatever", "@getbootstrap");
 					})
 
-					statusButton = true
-					setStore({ switch: statusButton })
+
+					// console.log(store)
+					// console.log(store.statusIDHolder[0])
+					setStore({ statusIDHolder: [{ state: true, ID: 0 }] })
+					// console.log(store.statusIDHolder[0])
 				}
+
 			},
+			setID:(e)=>{
+				const store = getStore();
+				const sHolder = store.statusIDHolder[0];
+				let id = e.target.parentNode.parentNode.querySelector("#ID-Info").innerText
+				// console.log(id)
+				// console.log(sHolder)
+				
+				if(sHolder["state"] === true){
+					setStore({ statusIDHolder: [{ "state": false, "ID": id }] })
+					// console.log(sHolder)
+
+				}
+
+				// setStore({ statusIDHolder: {"state":true, "ID":ID} })
+				// setStore({ statusIDHolder: [{ state: true, ID: ID }] })
+				// 	console.log(store.statusIDHolder[0])
+				
+			},
+
 			statusChangeTable: (e) => {
 				const store = getStore();
 				const getStatus = e.target.innerText
-				let setStatus = {};
+				const getID = Number(store.statusIDHolder[0]["ID"])
+				// document.querySelector("#ID-Info").innerText;
+				let setStatus = {}, newStatus ={};
+
+				// console.log(getStatus)
+				console.log(getID)
+				// console.log(e)
+				
+
+				store.statusArr.forEach((item) => {
+					// console.log(item)
+					if (getStatus === item["Status"]) {
+						setStatus = item
+						console.log(setStatus)
+					}
+				})
+
+				// store.list.forEach((item,index)=>{
+				// 	// console.log(item["ID Info"])
+				// 	// console.log(item)
+
+				// 	if (getID === item["ID Info"]) {
+				// 		console.log(store.list)
+
+				// 		// setStatus = item
+				// 		// console.log(setStatus)
+
+				// 		newStatus = {
+				// 				"Task Info": item["Task Info"],
+				// 				"ID Info": item["ID Info"],
+				// 				"Status": setStatus,
+				// 				"Created": item["Created"],
+				// 				"Memo": item["Memo"]
+				// 		};
+				// 		console.log(newStatus)
+
+				// 	}
+				// })
+				// // let newStatus = {
+				// // 	"Task Info": store.details[0]["Task Info"],
+				// // 	"ID Info": store.details[0]["ID Info"],
+				// // 	"Status": setStatus,
+				// // 	"Created": store.details[0]["Created"],
+				// // 	"Memo": store.details[0]["Memo"]
+				// // };
+				// const newList = [...store.list, newStatus];
+				// setStore({ list: newList });
+				// setStore({ details: [newStatus] });
+
+				store.list.forEach((item) => {
+					if (getID === item["ID Info"]) {
+					  newStatus = {
+						"Task Info": item["Task Info"],
+						"ID Info": item["ID Info"],
+						"Created": item["Created"],
+						"Status": setStatus,
+						"Memo": item["Memo"]
+					  };
+					}
+				  });
+			  
+				  const newList = store.list.map((item) => {
+					if (getID === item["ID Info"]) {
+					  return newStatus;
+					} else {
+					  return item;
+					}
+				  });
+				  setStore({ list: newList });
 
 			},
 
@@ -332,6 +444,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			gotoPage: (i) => {
 				const store = getStore();
+				const actions = getActions()
 				let addDetails;
 				store.list.map((item, index) => {
 
@@ -342,6 +455,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				})
 				setStore({ details: [addDetails] });
+				actions.reFatch()
 
 			},
 			ranDate: () => {
@@ -378,7 +492,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			taskChangeDetail: (e) => {
 				const store = getStore();
 				const inputValue = store.holder;
-				e.preventDefault()
+				const getForm = document.querySelector("#task-change")
+				e.preventDefault();
 
 				let newTask = {
 					"Task Info": inputValue,
@@ -389,6 +504,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				setStore({ details: [newTask] });
 				setStore({ holder: "" })
+				getForm.value = ""
 
 			},
 
@@ -417,6 +533,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addMemoDetail: () => {
 				const store = getStore();
 				const inputValue = store.holder;
+				const getTextArea = document.querySelector("#message-text")
 
 				let newMemo = {
 					"Task Info": store.details[0]["Task Info"],
@@ -427,12 +544,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				setStore({ holder: "" })
 				setStore({ details: [newMemo] });
+				getTextArea.value=""
 
 			},
 
 			backDetail: () => {
 
 				const store = getStore();
+				const actions = getActions()
 				const currentTask = store.details[0];
 				const firstIndex = 0;
 				const lastIndex = store.list.length - 1;
@@ -450,11 +569,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 				setStore({ details: [setPreviousTask] });
+				actions.reFatch();
 
 			},
 
 			nextDetail: () => {
 				const store = getStore();
+				const actions = getActions()
 				const firstIndex = 0;
 				const lastIndex = store.list.length - 1;
 				const currentTask = store.details[0];
@@ -469,6 +590,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				setStore({ details: [setNextTask] });
+				actions.reFatch()
 
 			},
 

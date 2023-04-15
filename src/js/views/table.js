@@ -98,10 +98,10 @@ export default function Table() {
                 store.list.map((item, index) => (
                   <tr className="m-1" key={index}>
                     <td className="pl-2 py-3 text-left text-break">{item["Task Info"]}</td>
-                    <td className="py-3">{item["ID Info"]}</td>
+                    <td className="py-3" id="ID-Info">{item["ID Info"]}</td>
                     <td className="py-3" >{item["Created"]}</td>
                     <td className="pt-3 pb-0">
-                      <label className={"badge badge-" + item["Status"]["Color"]} id="switchIcon">
+                      <label className={"badge badge-" + item["Status"]["Color"]} id="switchIcon" onClick={(e)=>actions.setID(e)}>
                         {item["Status"]["Status"]}
                       </label>
                     </td>
@@ -190,7 +190,7 @@ export default function Table() {
                           <label className={"p-3 col badge badge-" + item["Color"]} onClick={(e) => actions.statusChangeTable(e)} data-bs-dismiss="modal">
                             {item["Status"]}
                           </label>
-                          {console.log(item["Status"])}
+                          {/* {console.log(item["Status"])} */}
                         </div>
                       );
                     });

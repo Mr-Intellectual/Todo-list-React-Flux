@@ -298,10 +298,10 @@ export default function Detials() {
             </div>
 
             <div className="modal-body p-1">
-              <form>
+              <form onSubmit={(e)=>actions.handleSubmit(e)}>
                 <div className="mb-2">
                   <label htmlFor="message-text" className="col-form-label text-center mt-1">Write Memo Here:</label>
-                  <textarea className="form-control" rows="10" id="message-text" onChange={(e) => actions.setHolder(e)}></textarea>
+                  <textarea className="form-control" rows="10" id="message-text" onChange={(e) => actions.setHolder(e)} ></textarea>
                 </div>
               </form>
             </div>
@@ -323,10 +323,10 @@ export default function Detials() {
             </div>
 
             <div className="modal-body p-1">
-              <form>
+              <form onSubmit={(e) => actions.taskChangeDetail(e)} id="task-from" >
                 <div className="mb-2">
                   <label htmlFor="recipient-name" className="col-form-label">Change Task Here:</label>
-                  <input type="text" className="form-control" id="recipient-name" onChange={(e) => actions.setHolder(e)} />
+                  <input type="text" className="form-control" id="task-change" onChange={(e) => actions.setHolder(e) } onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.closest('.modal').querySelector('[data-bs-dismiss="modal"]').click()} />
                 </div>
               </form>
             </div>
