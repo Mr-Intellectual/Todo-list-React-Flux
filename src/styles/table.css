@@ -126,3 +126,46 @@
   th>div {
     height: 100% !important;
   }
+
+  label {
+    position: relative;
+  }
+
+  td:has(.status)>label::after,
+  td:has(.status)>label::before {
+    position: absolute;
+    content: ' ';
+    height: 100%;
+    width: 100px;
+    top: 0%;
+    left: 0%;
+    box-shadow: 0 0 20px black;
+    animation: glow-grow 1s ease-out infinite;
+    /* border-radius: 5px; */
+  }
+
+  /* td:has(.status) > label::after{
+  animation-delay: .30s;
+
+  }
+
+  td:has(.status) > label::before{
+  animation-delay: 15;
+
+  } */
+
+  @keyframes glow-grow {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+
+    80% {
+      opacity: .9;
+    }
+
+    100% {
+      transform: scale(1.01);
+      opacity: 0;
+    }
+  }

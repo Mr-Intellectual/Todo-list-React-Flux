@@ -101,7 +101,7 @@ export default function Table() {
                     <td className="py-3" id="ID-Info">{item["ID Info"]}</td>
                     <td className="py-3" >{item["Created"]}</td>
                     <td className="pt-3 pb-0">
-                      <label className={"badge badge-" + item["Status"]["Color"]} id="switchIcon" onClick={(e)=>actions.setID(e)}>
+                      <label className={"badge badge-" + item["Status"]["Color"] + (store.statusIDHolder[0]["state"] === true ? " status": "")} id="switchIcon" onClick={(e)=>actions.setID(e)}>
                         {item["Status"]["Status"]}
                       </label>
                     </td>

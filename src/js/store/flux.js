@@ -5,30 +5,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			list: [
-				{
-					"Task Info": "0--",
-					"ID Info": 12345,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
-					"Memo": "",
+				// {
+				// 	"Task Info": "0--",
+				// 	"ID Info": 12345,
+				// 	"Created": "Jan. 23, 2023",
+				// 	"Status": { "Status": "Pending", "Color": "danger" },
+				// 	"Memo": "",
 
-				},
-				{
-					"Task Info": "1--",
-					"ID Info": 63283,
-					"Created": "Feb. 23, 2023",
-					"Status": { "Status": "Completed", "Color": "success" },
-					"Memo": "hello",
+				// },
+				// {
+				// 	"Task Info": "1--",
+				// 	"ID Info": 63283,
+				// 	"Created": "Feb. 23, 2023",
+				// 	"Status": { "Status": "Completed", "Color": "success" },
+				// 	"Memo": "hello",
 
-				},
-				{
-					"Task Info": "2--",
-					"ID Info": 19242,
-					"Created": "Oct. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
-					"Memo": "",
+				// },
+				// {
+				// 	"Task Info": "2--",
+				// 	"ID Info": 19242,
+				// 	"Created": "Oct. 23, 2023",
+				// 	"Status": { "Status": "Pending", "Color": "danger" },
+				// 	"Memo": "",
 
-				},
+				// },
 				// {
 				// 	"Task Info": "3--",
 				// 	"ID Info": 17492,
@@ -64,8 +64,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			holder: "",
 			statusIDHolder: [
 				{
-				"state":false,
-				"ID":0,
+					"state": false,
+					"ID": 0,
 				}
 			],
 			details: [
@@ -134,8 +134,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (e.key === "Enter" && inputValue === "") {
 					alert("The input cannot be empty");
 				} else if (e.key === "Enter") {
-					
-					
+
+
 					const newObject = {
 						"Task Info": inputValue,
 						"ID Info": Info.ID,
@@ -232,21 +232,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 						i.removeAttribute("data-bs-whatever", "@getbootstrap");
 					})
 					setStore({ switch: false });
+					setStore({ statusIDHolder: [{ state: false, ID: 0 }] })
 				} else if (switchValue === false) {
 
 				}
 			},
 
-			reFatch: ()=>{
+			reFatch: () => {
 				const store = getStore();
 				const actions = getActions();
-			  
+
 				store.list.forEach(async (item, index) => {
-				  if ( item["Memo"] === "Waiting") {
-					await actions.fetchData();
-					console.log(item)
-					item["Memo"] = store.memoHolder
-				  }
+					if (item["Memo"] === "Waiting") {
+						await actions.fetchData();
+						item["Memo"] = store.memoHolder
+					}
 				});
 
 
@@ -255,7 +255,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			switchStatusButton: (e) => {
 				//need code..
 				const store = getStore();
-				const switchValue = store.statusIDHolder[0]["ID"];
+				// const switchValue = store.statusIDHolder[0]["ID"];
 				let status = document.querySelectorAll(".badge")
 
 				if (e.target.parentNode.parentNode.querySelector("#switch").id === "switch") {
@@ -266,104 +266,57 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 
 
-					// console.log(store)
-					// console.log(store.statusIDHolder[0])
+
 					setStore({ statusIDHolder: [{ state: true, ID: 0 }] })
-					// console.log(store.statusIDHolder[0])
 				}
 
 			},
-			setID:(e)=>{
+			setID: (e) => {
 				const store = getStore();
 				const sHolder = store.statusIDHolder[0];
 				let id = e.target.parentNode.parentNode.querySelector("#ID-Info").innerText
-				// console.log(id)
-				// console.log(sHolder)
-				
-				if(sHolder["state"] === true){
+
+				if (sHolder["state"] === true) {
 					setStore({ statusIDHolder: [{ "state": false, "ID": id }] })
-					// console.log(sHolder)
 
 				}
 
-				// setStore({ statusIDHolder: {"state":true, "ID":ID} })
-				// setStore({ statusIDHolder: [{ state: true, ID: ID }] })
-				// 	console.log(store.statusIDHolder[0])
-				
 			},
 
 			statusChangeTable: (e) => {
 				const store = getStore();
 				const getStatus = e.target.innerText
 				const getID = Number(store.statusIDHolder[0]["ID"])
-				// document.querySelector("#ID-Info").innerText;
-				let setStatus = {}, newStatus ={};
+				let setStatus = {}, newStatus = {};
 
-				// console.log(getStatus)
-				console.log(getID)
-				// console.log(e)
-				
 
 				store.statusArr.forEach((item) => {
-					// console.log(item)
 					if (getStatus === item["Status"]) {
 						setStatus = item
-						console.log(setStatus)
 					}
 				})
 
-				// store.list.forEach((item,index)=>{
-				// 	// console.log(item["ID Info"])
-				// 	// console.log(item)
-
-				// 	if (getID === item["ID Info"]) {
-				// 		console.log(store.list)
-
-				// 		// setStatus = item
-				// 		// console.log(setStatus)
-
-				// 		newStatus = {
-				// 				"Task Info": item["Task Info"],
-				// 				"ID Info": item["ID Info"],
-				// 				"Status": setStatus,
-				// 				"Created": item["Created"],
-				// 				"Memo": item["Memo"]
-				// 		};
-				// 		console.log(newStatus)
-
-				// 	}
-				// })
-				// // let newStatus = {
-				// // 	"Task Info": store.details[0]["Task Info"],
-				// // 	"ID Info": store.details[0]["ID Info"],
-				// // 	"Status": setStatus,
-				// // 	"Created": store.details[0]["Created"],
-				// // 	"Memo": store.details[0]["Memo"]
-				// // };
-				// const newList = [...store.list, newStatus];
-				// setStore({ list: newList });
-				// setStore({ details: [newStatus] });
 
 				store.list.forEach((item) => {
 					if (getID === item["ID Info"]) {
-					  newStatus = {
-						"Task Info": item["Task Info"],
-						"ID Info": item["ID Info"],
-						"Created": item["Created"],
-						"Status": setStatus,
-						"Memo": item["Memo"]
-					  };
+						newStatus = {
+							"Task Info": item["Task Info"],
+							"ID Info": item["ID Info"],
+							"Created": item["Created"],
+							"Status": setStatus,
+							"Memo": item["Memo"]
+						};
 					}
-				  });
-			  
-				  const newList = store.list.map((item) => {
+				});
+
+				const newList = store.list.map((item) => {
 					if (getID === item["ID Info"]) {
-					  return newStatus;
+						return newStatus;
 					} else {
-					  return item;
+						return item;
 					}
-				  });
-				  setStore({ list: newList });
+				});
+				setStore({ list: newList });
 
 			},
 
@@ -544,7 +497,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				setStore({ holder: "" })
 				setStore({ details: [newMemo] });
-				getTextArea.value=""
+				getTextArea.value = ""
 
 			},
 
