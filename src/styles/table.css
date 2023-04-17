@@ -3,7 +3,7 @@
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
   }
-
+/* 
   @media (max-width: 991.98px) {
     .padding {
       padding: 1.5rem;
@@ -14,7 +14,7 @@
     .padding {
       padding: 1rem;
     }
-  }
+  } */
 
   .padding {
     padding: 5rem;
@@ -36,7 +36,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 0;
+    min-width: 255px;
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
@@ -68,8 +68,8 @@
     display: block;
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+    /* -webkit-overflow-scrolling: touch; */
+    /* -ms-overflow-style: -ms-autohiding-scrollbar; */
 
   }
 

@@ -116,7 +116,7 @@ export default function Detials() {
                     <h3 className="title">Navigation</h3>
                     <div className="row pl-2">
                       <div className="form-group col-sm-2 m-0 p-0">
-                        <p className="m-0">
+                        <p className="m-0 text-nowrap">
                           <label className="" >Previous Task</label>
                         </p>
                         <button

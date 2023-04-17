@@ -8,7 +8,7 @@ export default function Table() {
 
   return (
     //Some html code should go here
-    <div className="card mt-5" id="page-content">
+    <div className="card mt-5  " id="page-content">
       <div className="card-body p-0 mt-2">
         <h4 className="card-title text-center my-4 fs-2">Todo List Table</h4>
         <div className="table-responsive pb-0">
@@ -16,19 +16,19 @@ export default function Table() {
             <thead className="">
               <tr className="" id="headerRow">
                 <th className="">
-                  <p className="p-0 mb-3 ">
+                  <p className="p-0 mb-3 mx-2 text-nowrap">
                     Task Info
                   </p>
                   <div className="mb-2 p-1"></div>
                 </th>
                 <th className="">
-                  <p className="p-0 mb-3">
+                  <p className="p-0 mb-3 mx-2 text-nowrap">
                     ID No.
                   </p>
                   <div className="mb-2 p-1"></div>
                 </th>
                 <th className="">
-                  <p className="p-0 mb-3">
+                  <p className="p-0 mb-3 mx-2 text-nowrap">
                     Created On
                   </p>
                   <div className="mb-2 p-1"></div>
@@ -41,7 +41,7 @@ export default function Table() {
                     <div className="">
                       <button
                         onClick={(e) => actions.switchStatusButton(e)}
-                        className=" btn btn-outline-black btn-sm mx-0 "
+                        className=" btn btn-outline-dark btn-sm mx-0 "
                         type="button"
                         id="switch"
                       >
@@ -56,10 +56,10 @@ export default function Table() {
                     Modify
                   </p>
                   {store.list.length === 0 ? <div className="mb-4 p-1"></div> : (
-                    <div className="">
+                    <div className="text-nowrap">
                       <button
                         onClick={(e) => actions.displayArrow(e)}
-                        className="btn btn-outline-black btn-sm mx-1"
+                        className="btn btn-outline-dark btn-sm mx-1"
                         type="button"
                         id="arrow"
                       >
@@ -67,7 +67,7 @@ export default function Table() {
                       </button>
                       <button
                         onClick={(e) => actions.displayTrash(e)}
-                        className="btn btn-outline btn-sm mx-1"
+                        className="btn btn-outline-dark btn-sm mx-1"
                         type="button"
                         id="dTrash"
                       >
@@ -76,7 +76,7 @@ export default function Table() {
                     </div>)}
                 </th>
                 <th className="">
-                  <p className="p-0 mb-3">
+                  <p className="p-0 mb-3 text-nowrap">
                     Memo Added
                   </p>
                   <div className="mb-2 p-1"></div>
@@ -105,7 +105,7 @@ export default function Table() {
                         {item["Status"]["Status"]}
                       </label>
                     </td>
-                    <td className="py-2">
+                    <td className="py-2 text-nowrap">
                       <button
                         onClick={() => actions.moveItemUp(index)}
                         style={{ display: "show" }}
