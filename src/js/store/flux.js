@@ -5,14 +5,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			list: [
-				{
-					"Task Info": "0--",
-					"ID Info": 12345,
-					"Created": "Jan. 23, 2023",
-					"Status": { "Status": "Pending", "Color": "danger" },
-					"Memo": "",
+				// {
+				// 	"Task Info": "0--",
+				// 	"ID Info": 12345,
+				// 	"Created": "Jan. 23, 2023",
+				// 	"Status": { "Status": "Pending", "Color": "danger" },
+				// 	"Memo": "",
 
-				},
+				// },
 				// {
 				// 	"Task Info": "1--",
 				// 	"ID Info": 63283,
