@@ -16,25 +16,25 @@ export default function Table() {
             <thead className="">
               <tr className="" id="headerRow">
                 <th className="">
-                  <p className="p-0 mb-3 mx-2 text-nowrap">
+                  <p className="p-0 mb-3 mx-2 text-nowrap text-center">
                     Task Info
                   </p>
                   <div className="mb-2 p-1"></div>
                 </th>
                 <th className="">
-                  <p className="p-0 mb-3 mx-2 text-nowrap">
+                  <p className="p-0 mb-3 mx-2 text-nowrap text-center">
                     ID No.
                   </p>
                   <div className="mb-2 p-1"></div>
                 </th>
                 <th className="">
-                  <p className="p-0 mb-3 mx-2 text-nowrap">
+                  <p className="p-0 mb-3 mx-2 text-nowrap text-center">
                     Created On
                   </p>
                   <div className="mb-2 p-1"></div>
                 </th>
                 <th className="">
-                  <p className="p-0 mb-0">
+                  <p className="p-0 mb-0 mx-2">
                     Status
                   </p>
                   {store.list.length === 0 ? <div className="mb-4 p-1"></div> : (
@@ -52,7 +52,7 @@ export default function Table() {
 
                 </th>
                 <th className="">
-                  <p className="p-0 mb-0">
+                  <p className="p-0 mb-0 mx-2 text-center">
                     Modify
                   </p>
                   {store.list.length === 0 ? <div className="mb-4 p-1"></div> : (
@@ -76,13 +76,13 @@ export default function Table() {
                     </div>)}
                 </th>
                 <th className="">
-                  <p className="p-0 mb-3 text-nowrap">
+                  <p className="p-0 mb-3 mx-2 text-nowrap text-center">
                     Memo Added
                   </p>
                   <div className="mb-2 p-1"></div>
                 </th>
                 <th className="">
-                  <p className="p-0 mb-3">
+                  <p className="p-0 mb-3 mx-2 text-nowrap text-center">
                     Go To Page
                   </p>
                   <div className="mb-2 p-1"></div>
