@@ -3,18 +3,6 @@
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
   }
-/* 
-  @media (max-width: 991.98px) {
-    .padding {
-      padding: 1.5rem;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    .padding {
-      padding: 1rem;
-    }
-  } */
 
   .padding {
     padding: 5rem;
@@ -68,8 +56,6 @@
     display: block;
     width: 100%;
     overflow-x: auto;
-    /* -webkit-overflow-scrolling: touch; */
-    /* -ms-overflow-style: -ms-autohiding-scrollbar; */
 
   }
 
@@ -113,12 +99,6 @@
     font-weight: normal;
   }
 
-  @media all and (min-width: 768px) {
-    body {
-      min-width: 960px;
-    }
-  }
-
   thead {
     height: auto;
   }
@@ -141,18 +121,8 @@
     left: 0%;
     box-shadow: 0 0 20px black;
     animation: glow-grow 1s ease-out infinite;
-    /* border-radius: 5px; */
   }
 
-  /* td:has(.status) > label::after{
-  animation-delay: .30s;
-
-  }
-
-  td:has(.status) > label::before{
-  animation-delay: 15;
-
-  } */
 
   @keyframes glow-grow {
     0% {

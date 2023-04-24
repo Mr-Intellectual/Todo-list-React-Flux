@@ -10,7 +10,7 @@ export default function Detials() {
   return (
     //Some html code should go here
     <section className="detail-form dark">
-      <div className="container">
+      <div className="container" id="baseForm">
         <div className="block-heading">
           <h1>Task Details Page</h1>
           <p className="fs-5">You can modify your task on this page.</p>
@@ -53,7 +53,7 @@ export default function Detials() {
                 <h3 className="title">Modify Details</h3>
                 <div className="row">
                   <div className="row p-0 m-0">
-                    <div className="form-group col-sm-3">
+                    <div className="form-group col-3">
                       <p>
                         <label className="Label">Task Channge</label>
                       </p>
@@ -66,7 +66,7 @@ export default function Detials() {
                         <i className="fa-solid fa-list-check"></i>
                       </button>
                     </div>
-                    <div className="form-group col-sm-3">
+                    <div className="form-group col-3">
                       <p>
                         <label className="Label" >Date Channge</label>
                       </p>
@@ -79,7 +79,7 @@ export default function Detials() {
                         <i className="fa-solid fa-calendar-days fa-2x"></i>
                       </button>
                     </div>
-                    <div className="form-group col-sm-3">
+                    <div className="form-group col-3">
                       <p>
                         <label className="Label" >Status Channge</label>
                       </p>
@@ -92,7 +92,7 @@ export default function Detials() {
                         <i className="fa-solid fa-bars-progress"></i>
                       </button>
                     </div>
-                    <div className="form-group col-sm-3">
+                    <div className="form-group col-3">
                       <p className="mb-2">
                         <label className="Label" >Add Memo</label>
                       </p>
@@ -115,7 +115,7 @@ export default function Detials() {
                   <div className="form-group col-sm-12 mt-2 p-2 m-0">
                     <h3 className="title">Navigation</h3>
                     <div className="row pl-2">
-                      <div className="form-group col-sm-2 m-0 p-0">
+                      <div className="form-group col-2 m-0 p-0">
                         <p className="m-0 text-nowrap">
                           <label className="" >Previous Task</label>
                         </p>
@@ -142,7 +142,7 @@ export default function Detials() {
                         </Link>
                       </div>
 
-                      <div className="form-group col-sm-2 m-0 p-0">
+                      <div className="form-group col-2 m-0 p-0">
                         <p className="m-0">
                           <label className="" >Next Task</label>
                         </p>
@@ -247,14 +247,14 @@ export default function Detials() {
                   <div className="row">
                     <div className="col-6 mt-4">
                       <Link className="m-0 p-0" to="/todo">
-                        <button type="button" className="btn btn-primary">
+                        <button type="button" className="btn btn-primary btn-sm">
                           Goto Todo-List Entry
                         </button>
                       </Link>
                     </div>
                     <div className="col-6 mt-4">
                       <Link className="m-0 p-0" to="/table">
-                        <button type="button" className="btn btn-primary">
+                        <button type="button" className="btn btn-primary btn-sm">
                           Goto Todo-List Table
                         </button>
                       </Link>

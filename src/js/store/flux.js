@@ -5,54 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			list: [
-				// {
-				// 	"Task Info": "0--",
-				// 	"ID Info": 12345,
-				// 	"Created": "Jan. 23, 2023",
-				// 	"Status": { "Status": "Pending", "Color": "danger" },
-				// 	"Memo": "",
 
-				// },
-				// {
-				// 	"Task Info": "1--",
-				// 	"ID Info": 63283,
-				// 	"Created": "Feb. 23, 2023",
-				// 	"Status": { "Status": "Completed", "Color": "success" },
-				// 	"Memo": "hello",
-
-				// },
-				// {
-				// 	"Task Info": "2--",
-				// 	"ID Info": 19242,
-				// 	"Created": "Oct. 23, 2023",
-				// 	"Status": { "Status": "Pending", "Color": "danger" },
-				// 	"Memo": "",
-
-				// },
-				// {
-				// 	"Task Info": "3--",
-				// 	"ID Info": 17492,
-				// 	"Created": "Jan. 23, 2023",
-				// 	"Status": { "Status": "Completed", "Color": "success" },
-				// 	"Memo":"",
-
-				// },
-				// {
-				// 	"Task Info": "4--",
-				// 	"ID Info": 13793,
-				// 	"Created": "Jan. 23, 2023",
-				// 	"Status": { "Status": "Fixed", "Color": "info" },
-				// 	"Memo":"",
-
-				// },
-				// {
-				// 	"Task Info": "5--",
-				// 	"ID Info": 91484,
-				// 	"Created": "Jan. 23, 2023",
-				// 	"Status": { "Status": "In progress", "Color": "warning" },
-				// 	"Memo":"",
-
-				// },
 			],
 			statusArr: [
 				{ "Status": "Pending", "Color": "danger" },
@@ -69,14 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			details: [
-				{
-					"Task Info": "1--",
-					"ID Info": 63283,
-					"Created": "Feb. 23, 2023",
-					"Status": { "Status": "Completed", "Color": "success" },
-					"Memo": "hello",
 
-				},
 			],
 			memoHolder: "",
 
@@ -91,7 +37,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ list: newList })
 			},
 
-			checkIcon: (e) => {
+			checkIcon: () => {
 				const store = getStore();
 				const Info = getActions().ranInfo();
 				const inputValue = store.holder;
@@ -253,9 +199,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			switchStatusButton: (e) => {
-				//need code..
-				const store = getStore();
-				// const switchValue = store.statusIDHolder[0]["ID"];
 				let status = document.querySelectorAll(".badge")
 
 				if (e.target.parentNode.parentNode.querySelector("#switch").id === "switch") {
@@ -321,7 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			displayTrash: (e) => {
+			displayTrash: () => {
 
 				let up = document.querySelectorAll('#bUp'),
 					down = document.querySelectorAll('#bDown'),
@@ -337,7 +280,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			displayArrow: (e) => {
+			displayArrow: () => {
 				let up = document.querySelectorAll('#bUp'),
 					down = document.querySelectorAll('#bDown'),
 					trash = document.querySelectorAll('#bTrash')
@@ -351,6 +294,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					i.style.display = "none"
 				})
 			},
+
 			moveItemUp: (i) => {
 				const store = getStore();
 				const lastIndex = store.list.length - 1;
