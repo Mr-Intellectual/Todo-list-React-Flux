@@ -38,11 +38,11 @@ export default function Navbar() {
                 Table
               </p>
             </Link>
-            <Link className="nav-link text-white" to="/detials">
+            {/* <Link className="nav-link text-white" to="/detials">
               <p className="fs-6 m-0" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
                 Details
               </p>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

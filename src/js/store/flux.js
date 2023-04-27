@@ -141,10 +141,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			fetchData: () => {
+				// Lorem Ipsum API
+				// fetches Lorem Ipsum paragraphs to fill in textboxes demonstrations purposes 
+				// Endpoint: http://asdfast.beobit.net/api/
+				// Also using All Origins API to Pull content as JSON and avoid Same-origin and Cross-Origin Resource Sharing (CORS) policy problems.
+						
+
+
 				let ranInt = Math.floor(Math.random() * 21) + 95;
 				const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://asdfast.beobit.net/api/?type=word&length=' + ranInt + '&startLorem=true');
 				return new Promise((resolve, reject) => {
-					// Time control nod to spam the api
+					// Time control not to spam the API
 					setTimeout(() => {
 						fetch(url)
 							.then(response => response.json())
@@ -158,7 +165,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								console.error(error);
 								reject(error);
 							});
-					}, 100); // 1 second delay
+					}, 1000); // 1 second delay
 
 				});
 			},
